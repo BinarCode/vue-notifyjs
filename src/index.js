@@ -21,6 +21,11 @@ var NotificationsPlugin = {
         }
       }
     })
+    Object.defineProperty(Vue.prototype, '$notify', {
+      get () {
+        return this.$root.notificationStore.notify
+      }
+    })
     Object.defineProperty(Vue.prototype, '$notifications', {
       get () {
         return this.$root.notificationStore

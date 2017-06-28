@@ -201,6 +201,11 @@ var NotificationsPlugin = {
         };
       }
     });
+    Object.defineProperty(Vue.prototype, '$notify', {
+      get: function get() {
+        return this.$root.notificationStore.notify;
+      }
+    });
     Object.defineProperty(Vue.prototype, '$notifications', {
       get: function get() {
         return this.$root.notificationStore;
