@@ -38,13 +38,13 @@ export default {
 
 <!-- import styles -->
 <style src="vue-notifyjs/themes/default.css"></style>
-```
 
+```
 ## Props
 
 ## Notifications 
 
-```
+```js
 transitionName: {
  type:String,
  default:'list'
@@ -56,7 +56,7 @@ transitionMode: {
 ```
 
 ## Notification (passed through the object sent to $notify method
-```
+```js
 props: {
     message: String,
     icon: String,
