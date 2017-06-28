@@ -15,7 +15,7 @@
   export default{
       methods:{
           addNotification(verticalAlign='top', horizontalAlign='right'){
-            this.$notifications.notify(
+            this.$notify(
               {
                 message: 'Welcome ',
                 horizontalAlign: horizontalAlign,
