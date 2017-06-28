@@ -1,0 +1,61 @@
+{
+  "name": "vue-notifyjs",
+  "version": "0.1.0",
+  "description": "Simple notification component for Vue.js",
+  "repository": {
+    "url": "cristijora/vue-notifyjs",
+    "type": "git"
+  },
+  "main": "dist/vue-notifyjs.common.js",
+  "unpkg": "dist/vue-notifyjs",
+  "poi": {
+    "entry": "example/index.js",
+    "dist": "example/dist",
+    "homepage": "/vue-notifyjs/"
+  },
+  "files": [
+    "dist",
+    "themes"
+  ],
+  "scripts": {
+    "test": "echo 'no tests!' && npm run lint",
+    "prepublish": "npm run build",
+    "lint": "xo",
+    "build": "bili --format cjs --format umd --compress --banner --js babel && node-sass themes",
+    "build:example": "poi build",
+    "dev": "poi --port 5000",
+    "deploy": "npm run build:example && gh-pages -d example/dist"
+  },
+  "author": "cristij <joracristi@gmail.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "bili": "^0.16.0-rc.2",
+    "bootstrap": "^3.3.7",
+    "eslint-config-rem": "^3.0.0",
+    "gh-pages": "^1.0.0",
+    "node-sass": "^4.5.3",
+    "poi": "^9.0.2",
+    "rollup-plugin-babel": "^2.7.1",
+    "sass-loader": "^6.0.6",
+    "vue": "^2.3.4",
+    "vue-github-badge": "^1.0.0",
+    "xo": "^0.18.0"
+  },
+  "xo": {
+    "extends": "rem/prettier",
+    "ignores": [
+      "example/**"
+    ]
+  },
+  "babel": {
+    "presets": [
+      [
+        "vue-app",
+        {
+          "useBuiltIns": true
+        }
+      ]
+    ]
+  }
+}
