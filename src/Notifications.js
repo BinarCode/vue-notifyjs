@@ -23,11 +23,13 @@ export default {
   render(){
     console.log("rendering")
     const renderedNotifications = this.$notifications.state.map((notification, index)=>{
-        return  <Notification horizontalAlign={notification.horizontalAlign}
+        return  <Notification 
+         horizontalAlign={notification.horizontalAlign}
          verticalAlign={notification.verticalAlign}
          icon={notification.icon}
          message={notification.message}
          timeout={notification.timeout}
+         type={notification.type}
          key={notification} onClose={() => this.removeNotification(index)}/>
     }
     )

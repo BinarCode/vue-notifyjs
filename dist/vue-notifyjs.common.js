@@ -151,11 +151,13 @@ var Notifications = {
       return h(
         Notification,
         {
-          attrs: { horizontalAlign: notification.horizontalAlign,
+          attrs: {
+            horizontalAlign: notification.horizontalAlign,
             verticalAlign: notification.verticalAlign,
             icon: notification.icon,
             message: notification.message,
-            timeout: notification.timeout
+            timeout: notification.timeout,
+            type: notification.type
           },
           key: notification, on: {
             'close': function close() {
