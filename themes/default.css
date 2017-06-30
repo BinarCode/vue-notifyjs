@@ -12,6 +12,14 @@
   opacity: 0;
   transform: translateY(-30px); }
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .3s; }
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0; }
+
 button.close {
   -webkit-appearance: none;
   padding: 0;
@@ -28,14 +36,6 @@ button.close {
   text-shadow: 0 1px 0 #fff;
   filter: alpha(opacity=20);
   opacity: .2; }
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity .3s; }
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0; }
 
 .alert {
   border: 0;

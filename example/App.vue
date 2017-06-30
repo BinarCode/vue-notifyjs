@@ -20,7 +20,7 @@
                 message: 'Welcome ',
                 horizontalAlign: horizontalAlign,
                 verticalAlign: verticalAlign,
-                type: "primary",
+                type: "info",
                 timeout: 30000
               })
           }
