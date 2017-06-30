@@ -40,8 +40,11 @@ export default {
       let initialMargin = 20
       let alertHeight = this.elmHeight + 10;
       let sameAlertsCount = this.$notifications.state.filter((alert) => {
-        return alert.horizontalAlign === this.horizontalAlign && alert.verticalAlign === this.verticalAlign && alert.timestamp < this.timestamp
+        return alert.horizontalAlign === this.horizontalAlign && alert.verticalAlign === this.verticalAlign && alert.timestamp <= this.timestamp
       }).length
+      if(this.$notifications.settings.overlap){
+        sameAlertsCount = 1
+      }
       let pixels = (sameAlertsCount - 1) * alertHeight + initialMargin
       let styles = {}
       if (this.verticalAlign === 'top') {

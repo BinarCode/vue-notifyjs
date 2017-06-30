@@ -1,6 +1,6 @@
 <template>
   <div>
-    <notifications transition-name="bounceIn" transition-mode="out-in"></notifications>
+    <notifications></notifications>
     <button @click="addNotification('top','right')">Add Top right</button>
     <button @click="addNotification('top','left')">Add Top left</button>
     <button @click="addNotification('buttom','right')">Add Bottom right</button>
@@ -20,7 +20,7 @@
                 message: 'Welcome ',
                 horizontalAlign: horizontalAlign,
                 verticalAlign: verticalAlign,
-                type: "success",
+                type: "primary",
                 timeout: 30000
               })
           }

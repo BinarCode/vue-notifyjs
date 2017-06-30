@@ -1,0 +1,56 @@
+@import "material-colors";
+$gray-base:              #000 !default;
+$gray-darker:            lighten($gray-base, 13.5%) !default; // #222
+$gray-dark:              lighten($gray-base, 20%) !default;   // #333
+$gray:                   lighten($gray-base, 33.5%) !default; // #555
+$gray-light:             #999999 !default; // #999999
+$gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
+
+/*$brand-primary:         darken(#428bca, 6.5%) !default; // #337ab7
+$brand-success:         #5cb85c !default;
+$brand-info:            #5bc0de !default;
+$brand-warning:         #f0ad4e !default;
+$brand-danger:          #d9534f !default;*/
+
+$black-color:           #3C4858 !default;
+$black-input-color:     #555555 !default;
+
+$black: #000000; $rgb-black: "0,0,0" !default;
+$white: #ffffff; $rgb-white: "255,255,255" !default;
+$white-color: $white;
+
+$font-size-base:          14px !default;
+$font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~18px
+$font-size-small:         ceil(($font-size-base * 0.85)) !default; // ~12px
+$font-weight-bold:    500 !default;
+$border-radius-base:        4px !default;
+$margin-base:               15px !default;
+
+// Typography elements
+$mdb-font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif !default;
+$mdb-text-color-light:  $white !default;
+$mdb-text-color-light-hex: $white !default; // for contrast function in inverse
+$mdb-text-color-primary: unquote("rgba(#{$rgb-black}, 0.87)") !default;
+$mdb-text-color-primary-hex: $black !default; // for contrast function in inverse
+$icon-color: rgba(0,0,0,0.5) !default;
+/* SHADOWS */
+$mdb-shadow-key-umbra-opacity: 0.2 !default;
+$mdb-shadow-key-penumbra-opacity: 0.14 !default;
+$mdb-shadow-ambient-shadow-opacity: 0.12 !default;
+
+
+// Converted bs variables
+
+// Bootstrap brand color customization
+$white-color: #FFFFFF !default;
+
+$white-transparent: rgba($white-color, .8);
+
+$gray-color:  #999999 !default;
+
+$brand-primary: $purple !default;
+$brand-success: $green !default;
+$brand-danger: $red !default;
+$brand-warning: $orange !default;
+$brand-info: $cyan !default;
+$brand-rose: $pink !default;

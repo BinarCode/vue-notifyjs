@@ -1,4 +1,17 @@
 /*      light colors - used for select dropdown         */
+.list-item {
+  opacity: 1;
+  margin-right: 10px; }
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.4s; }
+
+.list-enter,
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(-30px); }
+
 button.close {
   -webkit-appearance: none;
   padding: 0;
@@ -82,16 +95,3 @@ button.close {
 .alert-danger {
   background-color: #FF8F5E;
   color: #B33C12; }
-
-.list-item {
-  opacity: 1;
-  margin-right: 10px; }
-
-.list-enter-active,
-.list-leave-active {
-  transition: all 0.4s; }
-
-.list-enter,
-.list-leave-to {
-  opacity: 0;
-  transform: translateY(-30px); }
