@@ -21,7 +21,7 @@
     "test": "echo 'no tests!' && npm run lint",
     "prepublish": "npm run build",
     "lint": "xo",
-    "build": "bili --format cjs --format umd --compress --banner --js babel && node-sass themes/default.scss -o themes/",
+    "build": "bili --format cjs --format umd --compress --banner --js babel && node-sass themes/ -o themes/",
     "build:example": "poi build",
     "dev": "poi --port 5000",
     "deploy": "npm run build:example && gh-pages -d example/dist"
