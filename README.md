@@ -3,6 +3,10 @@ Minimalist 3kb Notification component for Vue
 
 [jsFiddle demo](https://jsfiddle.net/z11fe07p/2248/)
 
+### 2 themes supported
+#### Bootstrap theme
+#### Material design theme
+
 ## Install
 
 ```bash
@@ -52,7 +56,11 @@ transitionName: {
 transitionMode: {
  type:String,
  default:'in-out'
-} 
+},
+overlap: {
+ type: Boolean,
+ default: false
+}
 ```
 
 ## Notification (passed through the object sent to $notify method
