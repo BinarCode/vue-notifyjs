@@ -56,8 +56,11 @@ var Notification = {
       var initialMargin = 20;
       var alertHeight = this.elmHeight + 10;
       var sameAlertsCount = this.$notifications.state.filter(function (alert) {
-        return alert.horizontalAlign === _this.horizontalAlign && alert.verticalAlign === _this.verticalAlign && alert.timestamp < _this.timestamp;
+        return alert.horizontalAlign === _this.horizontalAlign && alert.verticalAlign === _this.verticalAlign && alert.timestamp <= _this.timestamp;
       }).length;
+      if (this.$notifications.settings.overlap) {
+        sameAlertsCount = 1;
+      }
       var pixels = (sameAlertsCount - 1) * alertHeight + initialMargin;
       var styles = {};
       if (this.verticalAlign === 'top') {
@@ -124,107 +127,121 @@ var Notification = {
 };
 
 var Notifications = {
-  props: {
-    transitionName: {
-      type: String,
-      default: 'list'
+    props: {
+        transitionName: {
+            type: String,
+            default: 'list'
+        },
+        transitionMode: {
+            type: String,
+            default: 'in-out'
+        },
+        overlap: {
+            type: Boolean,
+            default: false
+        }
     },
-    transitionMode: {
-      type: String,
-      default: 'in-out'
+    data: function data() {
+        return {
+            notifications: this.$notifications.state
+        };
+    },
+
+    methods: {
+        removeNotification: function removeNotification(index) {
+            this.$notifications.removeNotification(index);
+        }
+    },
+    created: function created() {
+        this.$notifications.settings.overlap = this.overlap;
+    },
+    render: function render() {
+        var _this = this;
+
+        var h = arguments[0];
+
+        var renderedNotifications = this.$notifications.state.map(function (notification, index) {
+            return h(
+                Notification,
+                {
+                    attrs: {
+                        horizontalAlign: notification.horizontalAlign,
+                        verticalAlign: notification.verticalAlign,
+                        icon: notification.icon,
+                        message: notification.message,
+                        timeout: notification.timeout,
+                        type: notification.type
+                    },
+                    key: notification, on: {
+                        'close': function close() {
+                            return _this.removeNotification(index);
+                        }
+                    }
+                },
+                []
+            );
+        });
+        return h(
+            'div',
+            { 'class': 'notifications' },
+            [h(
+                'transition-group',
+                {
+                    attrs: { name: this.transitionName, mode: this.transitionMode }
+                },
+                [renderedNotifications]
+            )]
+        );
+    },
+
+    watch: {
+        overlap: function overlap(newVal) {
+            this.$notifications.settings.overlap = newVal;
+        }
     }
-  },
-  data: function data() {
-    return {
-      notifications: this.$notifications.state
-    };
-  },
-
-  methods: {
-    removeNotification: function removeNotification(index) {
-      this.$notifications.removeNotification(index);
-    }
-  },
-  render: function render() {
-    var _this = this;
-
-    var h = arguments[0];
-
-    console.log("rendering");
-    var renderedNotifications = this.$notifications.state.map(function (notification, index) {
-      return h(
-        Notification,
-        {
-          attrs: {
-            horizontalAlign: notification.horizontalAlign,
-            verticalAlign: notification.verticalAlign,
-            icon: notification.icon,
-            message: notification.message,
-            timeout: notification.timeout,
-            type: notification.type
-          },
-          key: notification, on: {
-            'close': function close() {
-              return _this.removeNotification(index);
-            }
-          }
-        },
-        []
-      );
-    });
-    return h(
-      'div',
-      { 'class': 'notifications' },
-      [h(
-        'transition-group',
-        {
-          attrs: { name: this.transitionName, mode: this.transitionMode }
-        },
-        [renderedNotifications]
-      )]
-    );
-  }
 };
 
 var NotificationStore = {
-  state: [], // here the notifications will be added
-
-  removeNotification: function removeNotification(index) {
-    this.state.splice(index, 1);
-  },
-  notify: function notify(notification) {
-    notification.timestamp = new Date();
-    this.state.push(notification);
-  }
+    state: [], // here the notifications will be added
+    settings: {
+        overlap: false
+    },
+    removeNotification: function removeNotification(index) {
+        this.state.splice(index, 1);
+    },
+    notify: function notify(notification) {
+        notification.timestamp = new Date();
+        this.state.push(notification);
+    }
 };
 
 var NotificationsPlugin = {
-  install: function install(Vue) {
-    Vue.mixin({
-      data: function data() {
-        return {
-          notificationStore: NotificationStore
-        };
-      },
+    install: function install(Vue) {
+        Vue.mixin({
+            data: function data() {
+                return {
+                    notificationStore: NotificationStore
+                };
+            },
 
-      methods: {
-        notify: function notify(notification) {
-          this.notificationStore.notify(notification);
-        }
-      }
-    });
-    Object.defineProperty(Vue.prototype, '$notify', {
-      get: function get() {
-        return this.$root.notify;
-      }
-    });
-    Object.defineProperty(Vue.prototype, '$notifications', {
-      get: function get() {
-        return this.$root.notificationStore;
-      }
-    });
-    Vue.component('Notifications', Notifications);
-  }
+            methods: {
+                notify: function notify(notification) {
+                    this.notificationStore.notify(notification);
+                }
+            }
+        });
+        Object.defineProperty(Vue.prototype, '$notify', {
+            get: function get() {
+                return this.$root.notify;
+            }
+        });
+        Object.defineProperty(Vue.prototype, '$notifications', {
+            get: function get() {
+                return this.$root.notificationStore;
+            }
+        });
+        Vue.component('Notifications', Notifications);
+    }
 };
 
 return NotificationsPlugin;
