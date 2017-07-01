@@ -1,12 +1,13 @@
 # vue-notifyjs
 Minimalist 3kb Notification component for Vue
 
-[jsFiddle demo](https://jsfiddle.net/z11fe07p/2248/)
-[Overlaping notifications](https://jsfiddle.net/z11fe07p/2284/)
+- [jsFiddle demo](https://jsfiddle.net/z11fe07p/2248/)
+- [Overlaping notifications](https://jsfiddle.net/z11fe07p/2284/)
 
 ### 2 themes supported
 #### [Default theme](https://jsfiddle.net/z11fe07p/2248/)
 #### [Material design theme](https://jsfiddle.net/z11fe07p/2286/)
+#### [Now-ui theme](https://jsfiddle.net/z11fe07p/2288/)
 
 ## Install
 
