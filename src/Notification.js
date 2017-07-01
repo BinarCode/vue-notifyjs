@@ -22,6 +22,9 @@ export default {
     timestamp:{
       type: Date,
       default: ()=>new Date()
+    },
+    component: {
+      type: [Object, Function]
     }
   },
   data () {
@@ -66,11 +69,12 @@ export default {
       setTimeout(this.close, this.timeout)
     }
   },
-  render(){
-    return (
-      <div
+  render(h){
+      let componentName = this.component
+      return (
+      <div onClick={this.close}
         data-notify="container"
-        class={['col-xs-11 col-sm-4 alert open ',{'alert-with-icon':this.icon}, this.verticalAlign, this.horizontalAlign, this.alertType]}
+        class={['alert open ',{'alert-with-icon':this.icon}, this.verticalAlign, this.horizontalAlign, this.alertType]}
         role="alert"
         style={this.customPosition}
         data-notify-position="top-center">
@@ -85,8 +89,10 @@ export default {
           this.icon &&  <span data-notify="icon" class={['alert-icon', this.icon]}></span>
         }
         <span data-notify="message">
-              {this.message}
-            </span>
+            {this.message!==undefined && this.message}
+            {this.component!==undefined &&
+            <this.component></this.component>}
+        </span>
       </div>
     )
   }

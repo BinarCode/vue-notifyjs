@@ -45,8 +45,9 @@ button.close {
   font-size: 14px;
   z-index: 100;
   display: inline-block;
-  position: fixed;
-  transition: all 0.5s ease-in-out; }
+  position: fixed !important;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer; }
   .alert.center {
     left: 0px;
     right: 0px;

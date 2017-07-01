@@ -1,5 +1,5 @@
 /*!
- * vue-notifyjs v0.1.3
+ * vue-notifyjs v0.1.4
  * (c) 2017-present cristij <joracristi@gmail.com>
  * Released under the MIT License.
  */
@@ -31,6 +31,9 @@ var Notification = {
       default: function _default() {
         return new Date();
       }
+    },
+    component: {
+      type: [Object, Function]
     }
   },
   data: function data() {
@@ -78,19 +81,21 @@ var Notification = {
       setTimeout(this.close, this.timeout);
     }
   },
-  render: function render() {
-    var h = arguments[0];
-
+  render: function render(h) {
+    var componentName = this.component;
     return h(
       'div',
       {
+        on: {
+          'click': this.close
+        },
         attrs: {
           'data-notify': 'container',
 
           role: 'alert',
 
           'data-notify-position': 'top-center' },
-        'class': ['col-xs-11 col-sm-4 alert open ', { 'alert-with-icon': this.icon }, this.verticalAlign, this.horizontalAlign, this.alertType], style: this.customPosition },
+        'class': ['alert open ', { 'alert-with-icon': this.icon }, this.verticalAlign, this.horizontalAlign, this.alertType], style: this.customPosition },
       [h(
         'button',
         {
@@ -116,7 +121,11 @@ var Notification = {
         {
           attrs: { 'data-notify': 'message' }
         },
-        [this.message]
+        [this.message !== undefined && this.message, this.component !== undefined && h(
+          this.component,
+          null,
+          []
+        )]
       )]
     );
   }
@@ -166,7 +175,8 @@ var Notifications = {
                         icon: notification.icon,
                         message: notification.message,
                         timeout: notification.timeout,
-                        type: notification.type
+                        type: notification.type,
+                        component: notification.component
                     },
                     key: notification, on: {
                         'close': function close() {

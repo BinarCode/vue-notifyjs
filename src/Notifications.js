@@ -36,6 +36,7 @@ export default {
                     message={notification.message}
                     timeout={notification.timeout}
                     type={notification.type}
+                    component ={notification.component}
                     key={notification} onClose={() => this.removeNotification(index)}/>
             }
         )

@@ -8,6 +8,12 @@
   </div>
 </template>
 <script>
+  let msg = {
+      functional:true,
+      render(){
+          return (<span> Welcome to <b>Paper Dashboard</b> - a beautiful freebie for every web developer</span>)
+      }
+  }
   import Vue from 'vue'
   import Notifications from '../src/index'
   import Notification from "../src/Notification";
@@ -17,11 +23,11 @@
           addNotification(verticalAlign='top', horizontalAlign='right'){
             this.$notify(
               {
-                message: 'Welcome ',
                 horizontalAlign: horizontalAlign,
                 verticalAlign: verticalAlign,
                 type: "info",
-                timeout: 30000
+                timeout: 30000,
+                component: msg
               })
           }
       }
