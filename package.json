@@ -1,6 +1,6 @@
 {
   "name": "vue-notifyjs",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Simple notification component for Vue.js",
   "repository": {
     "url": "cristijora/vue-notifyjs",
