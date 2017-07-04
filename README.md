@@ -5,7 +5,7 @@ Minimalist 3kb Notification component for Vue
 - [Overlaping notifications](https://jsfiddle.net/z11fe07p/2284/)
 - [Custom html content via components](https://jsfiddle.net/z11fe07p/2297/)
 
-### 2 themes supported
+### 3 themes supported
 #### [Default theme](https://jsfiddle.net/z11fe07p/2248/)
 #### [Material design theme](https://jsfiddle.net/z11fe07p/2286/)
 #### [Now-ui theme](https://jsfiddle.net/z11fe07p/2288/)
@@ -16,7 +16,14 @@ Minimalist 3kb Notification component for Vue
 yarn add vue-notifyjs
 ```
 
-CDN: [UNPKG](https://unpkg.com/vue-notifyjs/dist/)
+### CDN JS: 
+* [Minified version](https://unpkg.com/vue-notifyjs/dist/vue-notifyjs.min.js)
+* [Non-minified version](https://unpkg.com/vue-notifyjs/dist/vue-notifyjs.js)
+
+### CDN CSS: 
+* [Default theme](https://unpkg.com/vue-notifyjs/themes/default.css)
+* [Material theme](https://unpkg.com/vue-notifyjs/themes/material.css)
+* [Now UI theme](https://unpkg.com/vue-notifyjs/themes/now-ui.css)
 
 ## Usage
 
@@ -86,6 +93,9 @@ props: {
     timeout: {
       type: Number,
       default: 5000
+    },
+    component: {  //is rendered instead of notification message
+      type: [Object, Function]
     }
   },
 ```
