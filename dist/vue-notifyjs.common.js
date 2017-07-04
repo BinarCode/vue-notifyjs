@@ -6,129 +6,144 @@
 'use strict';
 
 var Notification = {
-  name: 'notification',
-  props: {
-    message: String,
-    icon: String,
-    verticalAlign: {
-      type: String,
-      default: 'top'
-    },
-    horizontalAlign: {
-      type: String,
-      default: 'center'
-    },
-    type: {
-      type: String,
-      default: 'info'
-    },
-    timeout: {
-      type: Number,
-      default: 5000
-    },
-    timestamp: {
-      type: Date,
-      default: function _default() {
-        return new Date();
-      }
-    },
-    component: {
-      type: [Object, Function]
-    }
-  },
-  data: function data() {
-    return {
-      elmHeight: 0
-    };
-  },
-
-  computed: {
-    hasIcon: function hasIcon() {
-      return this.icon && this.icon.length > 0;
-    },
-    alertType: function alertType() {
-      return 'alert-' + this.type;
-    },
-    customPosition: function customPosition() {
-      var _this = this;
-
-      var initialMargin = 20;
-      var alertHeight = this.elmHeight + 10;
-      var sameAlertsCount = this.$notifications.state.filter(function (alert) {
-        return alert.horizontalAlign === _this.horizontalAlign && alert.verticalAlign === _this.verticalAlign && alert.timestamp <= _this.timestamp;
-      }).length;
-      if (this.$notifications.settings.overlap) {
-        sameAlertsCount = 1;
-      }
-      var pixels = (sameAlertsCount - 1) * alertHeight + initialMargin;
-      var styles = {};
-      if (this.verticalAlign === 'top') {
-        styles.top = pixels + 'px';
-      } else {
-        styles.bottom = pixels + 'px';
-      }
-      return styles;
-    }
-  },
-  methods: {
-    close: function close() {
-      this.$emit('close');
-    }
-  },
-  mounted: function mounted() {
-    this.elmHeight = this.$el.clientHeight;
-    if (this.timeout) {
-      setTimeout(this.close, this.timeout);
-    }
-  },
-  render: function render(h) {
-    var componentName = this.component;
-    return h(
-      'div',
-      {
-        on: {
-          'click': this.close
+    name: 'notification',
+    props: {
+        message: String,
+        icon: String,
+        verticalAlign: {
+            type: String,
+            default: 'top',
+            validator: function validator(value) {
+                var acceptedValues = ['top', 'bottom'];
+                return acceptedValues.indexOf(value) !== -1;
+            }
         },
-        attrs: {
-          'data-notify': 'container',
-
-          role: 'alert',
-
-          'data-notify-position': 'top-center' },
-        'class': ['alert open ', { 'alert-with-icon': this.icon }, this.verticalAlign, this.horizontalAlign, this.alertType], style: this.customPosition },
-      [h(
-        'button',
-        {
-          attrs: {
-            type: 'button',
-            'aria-hidden': 'true',
-
-            'data-notify': 'dismiss'
-          },
-          'class': 'close col-xs-1', on: {
-            'click': this.close
-          }
+        horizontalAlign: {
+            type: String,
+            default: 'center',
+            validator: function validator(value) {
+                var acceptedValues = ['left', 'center', 'right'];
+                return acceptedValues.indexOf(value) !== -1;
+            }
         },
-        ['\xD7']
-      ), this.icon && h(
-        'span',
-        {
-          attrs: { 'data-notify': 'icon' },
-          'class': ['alert-icon', this.icon] },
-        []
-      ), h(
-        'span',
-        {
-          attrs: { 'data-notify': 'message' }
+        type: {
+            type: String,
+            default: 'info',
+            validator: function validator(value) {
+                var acceptedValues = ['info', 'primary', 'danger', 'warning', 'success'];
+                return acceptedValues.indexOf(value) !== -1;
+            }
         },
-        [this.message !== undefined && this.message, this.component !== undefined && h(
-          this.component,
-          null,
-          []
-        )]
-      )]
-    );
-  }
+        timeout: {
+            type: Number,
+            default: 5000,
+            validator: function validator(value) {
+                return value > 0;
+            }
+        },
+        timestamp: {
+            type: Date,
+            default: function _default() {
+                return new Date();
+            }
+        },
+        component: {
+            type: [Object, Function]
+        }
+    },
+    data: function data() {
+        return {
+            elmHeight: 0
+        };
+    },
+
+    computed: {
+        hasIcon: function hasIcon() {
+            return this.icon && this.icon.length > 0;
+        },
+        alertType: function alertType() {
+            return 'alert-' + this.type;
+        },
+        customPosition: function customPosition() {
+            var _this = this;
+
+            var initialMargin = 20;
+            var alertHeight = this.elmHeight + 10;
+            var sameAlertsCount = this.$notifications.state.filter(function (alert) {
+                return alert.horizontalAlign === _this.horizontalAlign && alert.verticalAlign === _this.verticalAlign && alert.timestamp <= _this.timestamp;
+            }).length;
+            if (this.$notifications.settings.overlap) {
+                sameAlertsCount = 1;
+            }
+            var pixels = (sameAlertsCount - 1) * alertHeight + initialMargin;
+            var styles = {};
+            if (this.verticalAlign === 'top') {
+                styles.top = pixels + 'px';
+            } else {
+                styles.bottom = pixels + 'px';
+            }
+            return styles;
+        }
+    },
+    methods: {
+        close: function close() {
+            this.$emit('close');
+        }
+    },
+    mounted: function mounted() {
+        this.elmHeight = this.$el.clientHeight;
+        if (this.timeout) {
+            setTimeout(this.close, this.timeout);
+        }
+    },
+    render: function render(h) {
+        var componentName = this.component;
+        return h(
+            'div',
+            {
+                on: {
+                    'click': this.close
+                },
+                attrs: {
+                    'data-notify': 'container',
+
+                    role: 'alert',
+
+                    'data-notify-position': 'top-center' },
+                'class': ['alert open ', { 'alert-with-icon': this.icon }, this.verticalAlign, this.horizontalAlign, this.alertType], style: this.customPosition },
+            [h(
+                'button',
+                {
+                    attrs: {
+                        type: 'button',
+                        'aria-hidden': 'true',
+
+                        'data-notify': 'dismiss'
+                    },
+                    'class': 'close col-xs-1', on: {
+                        'click': this.close
+                    }
+                },
+                ['\xD7']
+            ), this.icon && h(
+                'span',
+                {
+                    attrs: { 'data-notify': 'icon' },
+                    'class': ['alert-icon', this.icon] },
+                []
+            ), h(
+                'span',
+                {
+                    attrs: { 'data-notify': 'message' }
+                },
+                [this.message !== undefined && this.message, this.component !== undefined && h(
+                    this.component,
+                    null,
+                    []
+                )]
+            )]
+        );
+    }
 };
 
 var Notifications = {

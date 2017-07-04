@@ -5,19 +5,34 @@ export default {
         icon: String,
         verticalAlign: {
             type: String,
-            default: 'top'
+            default: 'top',
+            validator: (value) => {
+                let acceptedValues = ['top', 'bottom']
+                return acceptedValues.indexOf(value) !== -1
+            }
         },
         horizontalAlign: {
             type: String,
-            default: 'center'
+            default: 'center',
+            validator: (value) => {
+                let acceptedValues = ['left', 'center', 'right']
+                return acceptedValues.indexOf(value) !== -1
+            }
         },
         type: {
             type: String,
-            default: 'info'
+            default: 'info',
+            validator: (value) => {
+                let acceptedValues = ['info', 'primary', 'danger', 'warning', 'success']
+                return acceptedValues.indexOf(value) !== -1
+            }
         },
         timeout: {
             type: Number,
-            default: 5000
+            default: 5000,
+            validator: (value) => {
+                return value > 0
+            }
         },
         timestamp: {
             type: Date,
