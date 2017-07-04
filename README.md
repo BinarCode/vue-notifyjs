@@ -16,8 +16,12 @@ Minimalist 3kb Notification component for Vue
 yarn add vue-notifyjs
 ```
 
-CDN: [JS](https://unpkg.com/vue-notifyjs/dist/vue-notifyjs.min.js)
-CDN: [Themes folder (choose the desired css theme from it)](https://unpkg.com/vue-notifyjs/themes/)
+### CDN: [JS](https://unpkg.com/vue-notifyjs/dist/vue-notifyjs.min.js)
+
+### CDN CSS: 
+* [Default theme](https://unpkg.com/vue-notifyjs/themes/default.css)
+* [Material theme](https://unpkg.com/vue-notifyjs/themes/material.css)
+* [Now UI theme](https://unpkg.com/vue-notifyjs/themes/now-ui.css)
 
 ## Usage
 
