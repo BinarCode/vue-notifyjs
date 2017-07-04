@@ -86,6 +86,9 @@ props: {
     timeout: {
       type: Number,
       default: 5000
+    },
+    component: {  //is rendered instead of notification message
+      type: [Object, Function]
     }
   },
 ```
