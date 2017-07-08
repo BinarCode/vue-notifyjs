@@ -17,13 +17,13 @@ yarn add vue-notifyjs
 ```
 
 ### CDN JS: 
-* [Minified version](https://unpkg.com/vue-notifyjs/dist/vue-notifyjs.min.js)
-* [Non-minified version](https://unpkg.com/vue-notifyjs/dist/vue-notifyjs.js)
+* https://unpkg.com/vue-notifyjs/dist/vue-notifyjs.min.js
+* https://unpkg.com/vue-notifyjs/dist/vue-notifyjs.js
 
 ### CDN CSS: 
-* [Default theme](https://unpkg.com/vue-notifyjs/themes/default.css)
-* [Material theme](https://unpkg.com/vue-notifyjs/themes/material.css)
-* [Now UI theme](https://unpkg.com/vue-notifyjs/themes/now-ui.css)
+* https://unpkg.com/vue-notifyjs/themes/default.css
+* https://unpkg.com/vue-notifyjs/themes/material.css
+* https://unpkg.com/vue-notifyjs/themes/now-ui.css
 
 ## Usage
 
