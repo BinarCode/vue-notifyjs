@@ -33,7 +33,7 @@ yarn add vue-notifyjs
 </template>
 
 <script>
-import Notify from 'vue-slim-tabs'
+import Notify from 'vue-notifyjs'
 Vue.use(Notify)
 
 export default {
