@@ -1,5 +1,5 @@
 # vue-notifyjs
-Minimalist 3kb Notification component for Vue
+Minimalist, 3kb Notification component for Vue
 
 - [jsFiddle demo](https://jsfiddle.net/z11fe07p/2248/)
 - [Overlaping notifications](https://jsfiddle.net/z11fe07p/2284/)
@@ -38,22 +38,21 @@ Vue.use(Notify)
 
 export default {
    methods: {
-    addNotification(verticalAlign = 'top', horizontalAlign = 'right') {
+    addNotification() {
       this.$notify({
         message: 'Welcome',
-        horizontalAlign: horizontalAlign,
-        verticalAlign: verticalAlign,
-        type: "success"
+        type: 'success'
       })
     }
   }
 }
 </script>
-
 <!-- import styles -->
 <style src="vue-notifyjs/themes/default.css"></style>
 
 ```
+**Note:** `<notifications></notifications>` can be declared only once anywhere in your app,
+preferably in your root component so the notification component is alive inside any other components.
 ## Props
 
 ## Notifications 
@@ -73,7 +72,7 @@ overlap: {
 }
 ```
 
-## Notification (passed through the object sent to $notify method
+## Notification (passed through the object sent to $notify method)
 ```js
 props: {
     message: String,
