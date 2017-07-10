@@ -195,7 +195,8 @@ var Notifications = {
                         message: notification.message,
                         timeout: notification.timeout,
                         type: notification.type,
-                        component: notification.component
+                        component: notification.component,
+                        timestamp: notification.timestamp
                     },
                     key: notification, on: {
                         'close': function close() {
@@ -234,9 +235,21 @@ var NotificationStore = {
     removeNotification: function removeNotification(index) {
         this.state.splice(index, 1);
     },
-    notify: function notify(notification) {
+    addNotification: function addNotification(notification) {
         notification.timestamp = new Date();
+        notification.timestamp.setMilliseconds(notification.timestamp.getMilliseconds() + this.state.length);
         this.state.push(notification);
+    },
+    notify: function notify(notification) {
+        var _this = this;
+
+        if (Array.isArray(notification)) {
+            notification.forEach(function (notificationInstance) {
+                _this.addNotification(notificationInstance);
+            });
+        } else {
+            this.addNotification(notification);
+        }
     }
 };
 

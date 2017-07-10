@@ -8,9 +8,20 @@ const NotificationStore = {
     removeNotification (index) {
         this.state.splice(index, 1)
     },
-    notify (notification) {
+    addNotification(notification){
         notification.timestamp = new Date()
+        notification.timestamp.setMilliseconds(notification.timestamp.getMilliseconds() + this.state.length)
         this.state.push(notification)
+    },
+    notify (notification) {
+        if (Array.isArray(notification)) {
+            notification.forEach((notificationInstance) => {
+                this.addNotification(notificationInstance)
+            })
+        } else {
+            this.addNotification(notification)
+        }
+
     }
 }
 

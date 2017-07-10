@@ -21,14 +21,26 @@
   export default{
       methods:{
           addNotification(verticalAlign='top', horizontalAlign='right'){
-            this.$notify(
-              {
-                horizontalAlign: horizontalAlign,
-                verticalAlign: verticalAlign,
-                type: "info",
-                timeout: 30000,
-                component: msg
-              })
+              var notifications =[ {
+                  horizontalAlign: 'right',
+                  verticalAlign: 'top',
+                  type: "info",
+                  component: msg
+              },{
+                  horizontalAlign: 'right',
+                  verticalAlign: 'top',
+                  type: "info",
+                  component: msg
+                }]
+            this.$notify(notifications)
+
+           this.$notify( {
+               horizontalAlign: 'right',
+               verticalAlign: 'top',
+               type: "info",
+               component: msg
+           },)
+
           }
       }
   }
