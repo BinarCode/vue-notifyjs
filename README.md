@@ -4,6 +4,7 @@ Minimalist, 3kb Notification component for Vue
 - [jsFiddle demo](https://jsfiddle.net/z11fe07p/2248/)
 - [Overlaping notifications](https://jsfiddle.net/z11fe07p/2284/)
 - [Custom html content via components](https://jsfiddle.net/z11fe07p/2297/)
+- [Custom animations](https://jsfiddle.net/z11fe07p/2362/)
 
 ### 3 themes supported
 #### [Default theme](https://jsfiddle.net/z11fe07p/2248/)
