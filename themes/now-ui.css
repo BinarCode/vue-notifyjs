@@ -1,15 +1,15 @@
+.list-move {
+  transition: transform 0.3s, opacity 0.4s; }
+
 .list-item {
-  opacity: 1;
+  display: inline-block;
   margin-right: 10px; }
 
-.list-enter-active,
-.list-leave-active {
-  transition: all 0.4s; }
+.list-enter-active, .list-leave-active {
+  transition: opacity 0.4s; }
 
-.list-enter,
-.list-leave-to {
-  opacity: 0;
-  transform: translateY(-30px); }
+.list-enter, .list-leave-to {
+  opacity: 0; }
 
 .fade-enter-active,
 .fade-leave-active {
