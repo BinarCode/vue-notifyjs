@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import '../themes/now-ui.scss'
+import '../themes/now-ui.css'
 
 new Vue({
   el: '#app',

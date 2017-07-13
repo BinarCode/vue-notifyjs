@@ -16,12 +16,11 @@
   }
   import Vue from 'vue'
   import Notifications from '../src/index'
-  import Notification from "../src/Notification";
   Vue.use(Notifications)
   export default{
       methods:{
           addNotification(verticalAlign='top', horizontalAlign='right'){
-              var notifications =[ {
+              /*var notifications =[ {
                   horizontalAlign: 'right',
                   verticalAlign: 'top',
                   type: "info",
@@ -32,7 +31,7 @@
                   type: "info",
                   component: msg
                 }]
-            this.$notify(notifications)
+            this.$notify(notifications)*/
 
            this.$notify( {
                horizontalAlign: 'right',
@@ -46,49 +45,18 @@
   }
 </script>
 <style>
-@keyframes lightSpeedIn {
-  from {
-    transform: translate3d(100%, 10, 0) skewX(-30deg);
+  .list-move {
+    transition: transform 0.3s, opacity 0.4s;
+  }
+  .list-item {
+    display: inline-block;
+    margin-right: 10px;
+
+  }
+  .list-enter-active, .list-leave-active {
+    transition: opacity 0.4s;
+  }
+  .list-enter, .list-leave-to  /* .list-leave-active for <2.1.8 */ {
     opacity: 0;
   }
-
-  60% {
-    transform: skewX(20deg);
-    opacity: 1;
-  }
-
-  80% {
-    transform: skewX(-5deg);
-    opacity: 1;
-  }
-
-  to {
-    transform: none;
-    opacity: 1;
-  }
-}
-
-
-@keyframes lightSpeedOut {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    transform: translate3d(100%, 0, 0) skewX(30deg);
-    opacity: 0;
-  }
-}
-
-
-.bounceIn-enter-active,
-.bounceIn-leave-active {
-  animation: lightSpeedIn 0.4s ease-out;
-}
-
-.bounceIn-enter,
-.bounceIn-leave-to
-{
-  animation: lightSpeedOut 0.4s ease-in;
-}
 </style>

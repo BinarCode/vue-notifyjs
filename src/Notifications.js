@@ -20,8 +20,8 @@ export default {
         }
     },
     methods: {
-        removeNotification (index) {
-            this.$notifications.removeNotification(index)
+        removeNotification (timestamp) {
+            this.$notifications.removeNotification(timestamp)
         }
     },
     created(){
@@ -38,7 +38,7 @@ export default {
                     type={notification.type}
                     component={notification.component}
                     timestamp={notification.timestamp}
-                    key={notification} onClose={() => this.removeNotification(index)}/>
+                    key={notification.timestamp.getTime()} onClose={this.removeNotification}/>
             }
         )
         return (

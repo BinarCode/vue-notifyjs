@@ -91,7 +91,7 @@ var Notification = {
     },
     methods: {
         close: function close() {
-            this.$emit('close');
+            this.$emit('close', this.timestamp);
         }
     },
     mounted: function mounted() {
@@ -172,8 +172,8 @@ var Notifications = {
     },
 
     methods: {
-        removeNotification: function removeNotification(index) {
-            this.$notifications.removeNotification(index);
+        removeNotification: function removeNotification(timestamp) {
+            this.$notifications.removeNotification(timestamp);
         }
     },
     created: function created() {
@@ -198,10 +198,8 @@ var Notifications = {
                         component: notification.component,
                         timestamp: notification.timestamp
                     },
-                    key: notification, on: {
-                        'close': function close() {
-                            return _this.removeNotification(index);
-                        }
+                    key: notification.timestamp.getTime(), on: {
+                        'close': _this.removeNotification
                     }
                 },
                 []
@@ -232,8 +230,13 @@ var NotificationStore = {
     settings: {
         overlap: false
     },
-    removeNotification: function removeNotification(index) {
-        this.state.splice(index, 1);
+    removeNotification: function removeNotification(timestamp) {
+        var indexToDelete = this.state.findIndex(function (n) {
+            return n.timestamp === timestamp;
+        });
+        if (indexToDelete !== -1) {
+            this.state.splice(indexToDelete, 1);
+        }
     },
     addNotification: function addNotification(notification) {
         notification.timestamp = new Date();

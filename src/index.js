@@ -5,8 +5,11 @@ const NotificationStore = {
     settings: {
         overlap: false
     },
-    removeNotification (index) {
-        this.state.splice(index, 1)
+    removeNotification (timestamp) {
+        const indexToDelete = this.state.findIndex(n => n.timestamp === timestamp)
+        if (indexToDelete !== -1) {
+            this.state.splice(indexToDelete, 1)
+        }
     },
     addNotification(notification){
         notification.timestamp = new Date()
