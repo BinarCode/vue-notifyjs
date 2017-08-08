@@ -1,5 +1,12 @@
 # vue-notifyjs
-Minimalist, 3kb (minified), 1kb (minified & gzipped) Notification component for Vue
+Minimalist notification component for Vue
+
+Why use it?
+- Small: 1kb (minified & gzipped), 3kb (minified)
+- Simple `this.$notify({message:'My message'})`
+- Has multiple themes 
+- The animations can be customized through Vue transitions
+- Can be used both through npm and as a script tag
 
 - [jsFiddle demo](https://jsfiddle.net/z11fe07p/2248/)
 - [Overlaping notifications](https://jsfiddle.net/z11fe07p/2284/)
