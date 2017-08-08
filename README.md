@@ -8,6 +8,7 @@ Why use it?
 - The animations can be customized through Vue transitions
 - Can be used both through npm and as a script tag
 
+### Demos: 
 - [jsFiddle demo](https://jsfiddle.net/z11fe07p/2248/)
 - [Overlaping notifications](https://jsfiddle.net/z11fe07p/2284/)
 - [Custom html content via components](https://jsfiddle.net/z11fe07p/2297/)
