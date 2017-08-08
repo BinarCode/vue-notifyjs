@@ -1,5 +1,5 @@
 # vue-notifyjs
-Minimalist, 3kb Notification component for Vue
+Minimalist, 3kb (minified), 1kb (minified & gzipped) Notification component for Vue
 
 - [jsFiddle demo](https://jsfiddle.net/z11fe07p/2248/)
 - [Overlaping notifications](https://jsfiddle.net/z11fe07p/2284/)
