@@ -1,5 +1,5 @@
 /*!
- * vue-notifyjs v0.1.7
+ * vue-notifyjs v0.1.8
  * (c) 2017-present cristij <joracristi@gmail.com>
  * Released under the MIT License.
  */
