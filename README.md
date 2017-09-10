@@ -1,5 +1,5 @@
 # vue-notifyjs
-Minimalist notification component for Vue
+Minimalist notification component for Vue 2.x
 
 Why use it?
 - Small: 1kb (minified & gzipped), 3kb (minified)
