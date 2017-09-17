@@ -1,4 +1,10 @@
 # vue-notifyjs
+<p align="center">
+  <a href="https://www.npmjs.com/package/vue-notifyjs"><img src="https://img.shields.io/npm/v/vue-notifyjs.svg"></a>
+  <a href="https://www.npmjs.com/package/vue-notifyjs"><img src="https://img.shields.io/npm/dt/vue-notifyjs.svg"></a>
+  <a href="https://www.npmjs.com/package/vue-notifyjs"><img src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
+  <a href="https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D"><img src="https://img.shields.io/twitter/url/https/github.com/cristijora/vue-notifyjs.svg?style=social"></a>
+</p>
 Minimalist notification component for Vue 2.x
 
 Why use it?
@@ -12,7 +18,7 @@ Why use it?
 - [jsFiddle demo](https://jsfiddle.net/z11fe07p/2248/)
 - [Overlaping notifications](https://jsfiddle.net/z11fe07p/2284/)
 - [Custom html content via components](https://jsfiddle.net/z11fe07p/2297/)
-- [Custom animations](https://jsfiddle.net/z11fe07p/2362/)
+- [Custom animations](https://jsfiddle.net/z11fe07p/2517/)
 
 ### 3 themes supported
 #### [Default theme](https://jsfiddle.net/z11fe07p/2248/)
