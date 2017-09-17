@@ -1,94 +1,96 @@
 @import "./material/mixins";
 @import "./transitions/transitions";
-button.close {
-  -webkit-appearance: none;
-  padding: 0;
-  cursor: pointer;
-  background: 0 0;
-  border: 0;
-}
-.close {
-  font-size: inherit;
-  color: #FFFFFF;
-  opacity: .9;
-  text-shadow: none;
-  float: right;
-  font-weight: bold;
-  line-height: 1;
-  filter: alpha(opacity=20);
-}
-.alert {
-  border: 0;
-  border-radius: 0;
-  padding: 20px 15px;
-  line-height: 20px;
-  color: #FFFFFF;
-  font-size: 14px;
-  z-index: 100;
-  display: inline-block;
-  position: fixed !important;
-  transition: all 0.5s ease-in-out;
-  min-width:100px;
-  cursor: pointer;
-  &.center {
-    left: 0px;
-    right: 0px;
-    margin: 0 auto;
+.vue-notifyjs{
+  button.close {
+    -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
   }
-  &.left {
-    left: 20px;
+  .close {
+    font-size: inherit;
+    color: #FFFFFF;
+    opacity: .9;
+    text-shadow: none;
+    float: right;
+    font-weight: bold;
+    line-height: 1;
+    filter: alpha(opacity=20);
   }
-  &.right {
-    right: 20px;
-  }
-  b{
-    font-weight: $font-weight-bold;
-    text-transform: uppercase;
-    font-size: $font-size-small;
-  }
-  // SASS conversion note: please mirror any content change in _mixins-shared.scss alert-variations-content
-  @include alert-variations(unquote(".alert"), unquote(""), $mdb-text-color-light);
+  .alert {
+    border: 0;
+    border-radius: 0;
+    padding: 20px 15px;
+    line-height: 20px;
+    color: #FFFFFF;
+    font-size: 14px;
+    z-index: 100;
+    display: inline-block;
+    position: fixed !important;
+    transition: all 0.5s ease-in-out;
+    min-width:100px;
+    cursor: pointer;
+    &.center {
+      left: 0px;
+      right: 0px;
+      margin: 0 auto;
+    }
+    &.left {
+      left: 20px;
+    }
+    &.right {
+      right: 20px;
+    }
+    b{
+      font-weight: $font-weight-bold;
+      text-transform: uppercase;
+      font-size: $font-size-small;
+    }
+    // SASS conversion note: please mirror any content change in _mixins-shared.scss alert-variations-content
+    @include alert-variations(unquote(".alert"), unquote(""), $mdb-text-color-light);
 
-  &-info, &-danger, &-warning, &-success {
-    color: $mdb-text-color-light;
-  }
+    &-info, &-danger, &-warning, &-success {
+      color: $mdb-text-color-light;
+    }
 
-  &-default {
-    a, .alert-link {
-      color: $mdb-text-color-primary;
+    &-default {
+      a, .alert-link {
+        color: $mdb-text-color-primary;
+      }
+    }
+    &[data-notify="container"] {
+      width: 350px;
+      padding: 10px 10px 10px 20px;
+      border-radius: $border-radius-base;
+    }
+    i[data-notify="icon"] {
+      font-size: 30px;
+      display: block;
+      left: 15px;
+      position: absolute;
+      top: 50%;
+      margin-top: -15px;
+    }
+    span{
+      display: block;
+      max-width: 89%;
+    }
+
+    .alert-icon{
+      display: block;
+      float: left;
+      margin-right: $margin-base;
+
+      i{
+        margin-top: -7px;
+        top: 5px;
+        position: relative;
+      }
     }
   }
-  &[data-notify="container"] {
-    width: 350px;
-    padding: 10px 10px 10px 20px;
-    border-radius: $border-radius-base;
-  }
-  i[data-notify="icon"] {
-    font-size: 30px;
-    display: block;
-    left: 15px;
-    position: absolute;
-    top: 50%;
-    margin-top: -15px;
-  }
-  span{
-    display: block;
-    max-width: 89%;
-  }
 
-  .alert-icon{
-    display: block;
-    float: left;
-    margin-right: $margin-base;
-
-    i{
-      margin-top: -7px;
-      top: 5px;
-      position: relative;
-    }
+  .alert.alert-with-icon {
+    padding-left: 65px;
   }
-}
-
-.alert.alert-with-icon {
-  padding-left: 65px;
 }

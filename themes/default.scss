@@ -1,90 +1,92 @@
 @import "./default/variables";
 @import "./transitions/transitions";
-button.close {
-  -webkit-appearance: none;
-  padding: 0;
-  cursor: pointer;
-  background: transparent;
-  border: 0;
-}
-.close {
-  float: right;
-  font-size: 21px;
-  font-weight: bold;
-  line-height: 1;
-  color: #000;
-  text-shadow: 0 1px 0 #fff;
-  filter: alpha(opacity=20);
-  opacity: .2;
-}
+.vue-notifyjs{
+  button.close {
+    -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+  }
+  .close {
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: .2;
+  }
 
-.alert {
-  border: 0;
-  border-radius: 0;
-  color: #FFFFFF;
-  padding: 10px 15px;
-  font-size: 14px;
-  z-index: 100;
-  display: inline-block;
-  position: fixed !important;
-  transition: all 0.5s ease-in-out;
-  cursor: pointer;
-  &.center {
-    left: 0px;
-    right: 0px;
-    margin: 0 auto;
-  }
-  &.left {
-    left: 20px;
-  }
-  &.right {
-    right: 20px;
-  }
-  .container & {
-    border-radius: 4px;
-  }
-  .navbar & {
+  .alert {
+    border: 0;
     border-radius: 0;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 85px;
-    width: 100%;
-    z-index: 3;
+    color: #FFFFFF;
+    padding: 10px 15px;
+    font-size: 14px;
+    z-index: 100;
+    display: inline-block;
+    position: fixed !important;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+    &.center {
+      left: 0px;
+      right: 0px;
+      margin: 0 auto;
+    }
+    &.left {
+      left: 20px;
+    }
+    &.right {
+      right: 20px;
+    }
+    .container & {
+      border-radius: 4px;
+    }
+    .navbar & {
+      border-radius: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 85px;
+      width: 100%;
+      z-index: 3;
+    }
+    .navbar:not(.navbar-transparent) & {
+      top: 70px;
+    }
+    .alert-icon {
+      font-size: 30px;
+      margin-right: 5px;
+    }
+    .close~span {
+      display: block;
+      max-width: 89%;
+    }
+    &[data-notify="container"] {
+      width: 350px;
+      padding: 10px 10px 10px 20px;
+      border-radius: $border-radius-base;
+    }
+    &.alert-with-icon {
+      padding-left: 65px;
+    }
   }
-  .navbar:not(.navbar-transparent) & {
-    top: 70px;
+  .alert-info {
+    background-color: $bg-info;
+    color: $info-states-color;
   }
-  .alert-icon {
-    font-size: 30px;
-    margin-right: 5px;
+  .alert-success {
+    background-color: $bg-success;
+    color: $success-states-color;
   }
-  .close~span {
-    display: block;
-    max-width: 89%;
+  .alert-warning {
+    background-color: $bg-warning;
+    color: $warning-states-color;
   }
-  &[data-notify="container"] {
-    width: 350px;
-    padding: 10px 10px 10px 20px;
-    border-radius: $border-radius-base;
+  .alert-danger {
+    background-color: $bg-danger;
+    color: $danger-states-color;
   }
-  &.alert-with-icon {
-    padding-left: 65px;
-  }
-}
-.alert-info {
-  background-color: $bg-info;
-  color: $info-states-color;
-}
-.alert-success {
-  background-color: $bg-success;
-  color: $success-states-color;
-}
-.alert-warning {
-  background-color: $bg-warning;
-  color: $warning-states-color;
-}
-.alert-danger {
-  background-color: $bg-danger;
-  color: $danger-states-color;
 }

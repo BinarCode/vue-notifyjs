@@ -1,111 +1,114 @@
 @import "transitions/transitions";
 $border-radius-base: 4px !default;
-button.close {
-  -webkit-appearance: none;
-  padding: 0;
-  cursor: pointer;
-  background: transparent;
-  border: 0;
-}
-
-.close {
-  float: right;
-  font-size: 21px;
-  font-weight: bold;
-  line-height: 1;
-  color: #000;
-  text-shadow: 0 1px 0 #fff;
-  filter: alpha(opacity=20);
-  opacity: .2;
-}
-
-.alert {
-  border: 0;
-  border-radius: 0.1875rem;
-  color: #FFFFFF;
-  padding-top: .9rem;
-  padding-bottom: .9rem;
-  font-size: 14px;
-  z-index: 100;
-  display: inline-block;
-  position: fixed !important;
-  transition: all 0.5s ease-in-out;
-  cursor: pointer;
-  &.center {
-    left: 0px;
-    right: 0px;
-    margin: 0 auto;
+.vue-notifyjs {
+  button.close {
+    -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
   }
-  &.left {
-    left: 20px;
+
+  .close {
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: .2;
   }
-  &.right {
-    right: 20px;
+
+  .alert {
+    border: 0;
+    border-radius: 0.1875rem;
+    color: #FFFFFF;
+    padding-top: .9rem;
+    padding-bottom: .9rem;
+    font-size: 14px;
+    z-index: 100;
+    display: inline-block;
+    position: fixed !important;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+    &.center {
+      left: 0px;
+      right: 0px;
+      margin: 0 auto;
+    }
+    &.left {
+      left: 20px;
+    }
+    &.right {
+      right: 20px;
+    }
+    &[data-notify="container"] {
+      width: 350px;
+      padding: 10px 10px 10px 20px;
+      border-radius: $border-radius-base;
+    }
   }
-  &[data-notify="container"] {
-    width: 350px;
-    padding: 10px 10px 10px 20px;
-    border-radius: $border-radius-base;
+
+  .alert.alert-success {
+    background-color: #1be611;
   }
-}
 
-.alert.alert-success {
-  background-color: #1be611;
-}
+  .alert.alert-danger {
+    background-color: #ff5050;
+  }
 
-.alert.alert-danger {
-  background-color: #ff5050;
-}
+  .alert.alert-warning {
+    background-color: #ffbc50;
+  }
 
-.alert.alert-warning {
-  background-color: #ffbc50;
-}
+  .alert.alert-info {
+    background-color: #46b3ff;
+  }
 
-.alert.alert-info {
-  background-color: #46b3ff;
-}
+  .alert.alert-primary {
+    background-color: #fa764b;
+  }
 
-.alert.alert-primary {
-  background-color: #fa764b;
-}
+  .alert i.fa, .alert i.now-ui-icons {
+    font-size: 20px;
+  }
 
-.alert i.fa, .alert i.now-ui-icons {
-  font-size: 20px;
-}
+  .alert .close {
+    color: #FFFFFF;
+    opacity: .9;
+    text-shadow: none;
+    line-height: 0;
+    outline: 0;
+  }
 
-.alert .close {
-  color: #FFFFFF;
-  opacity: .9;
-  text-shadow: none;
-  line-height: 0;
-  outline: 0;
-}
+  .alert span[data-notify="icon"] {
+    font-size: 22px;
+    display: block;
+    left: 19px;
+    position: absolute;
+    top: 50%;
+    margin-top: -11px;
+  }
 
-.alert span[data-notify="icon"] {
-  font-size: 22px;
-  display: block;
-  left: 19px;
-  position: absolute;
-  top: 50%;
-  margin-top: -11px;
-}
+  .alert button.close {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -13px;
+    width: 25px;
+    height: 25px;
+    padding: 3px;
+  }
 
-.alert button.close {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  margin-top: -13px;
-  width: 25px;
-  height: 25px;
-  padding: 3px;
-}
+  .alert .close ~ span {
+    display: block;
+    max-width: 89%;
+  }
 
-.alert .close ~ span {
-  display: block;
-  max-width: 89%;
-}
+  .alert.alert-with-icon {
+    padding-left: 65px;
+  }
 
-.alert.alert-with-icon {
-  padding-left: 65px;
-}
 
+}
