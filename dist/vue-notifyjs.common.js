@@ -9,6 +9,7 @@ var Notification = {
     name: 'notification',
     props: {
         message: String,
+        title: String,
         icon: String,
         verticalAlign: {
             type: String,
@@ -20,7 +21,7 @@ var Notification = {
         },
         horizontalAlign: {
             type: String,
-            default: 'center',
+            default: 'right',
             validator: function validator(value) {
                 var acceptedValues = ['left', 'center', 'right'];
                 return acceptedValues.indexOf(value) !== -1;
@@ -136,7 +137,19 @@ var Notification = {
                 {
                     attrs: { 'data-notify': 'message' }
                 },
-                [this.message !== undefined && this.message, this.component !== undefined && h(
+                [this.title !== undefined && h(
+                    'span',
+                    { 'class': 'title' },
+                    [h(
+                        'b',
+                        null,
+                        [this.title, h(
+                            'br',
+                            null,
+                            []
+                        )]
+                    )]
+                ), this.message !== undefined && this.message, this.component !== undefined && h(
                     this.component,
                     null,
                     []
@@ -189,6 +202,7 @@ var Notifications = {
                         verticalAlign: notification.verticalAlign,
                         icon: notification.icon,
                         message: notification.message,
+                        title: notification.title,
                         timeout: notification.timeout,
                         type: notification.type,
                         component: notification.component,
@@ -224,7 +238,14 @@ var Notifications = {
 var NotificationStore = {
     state: [], // here the notifications will be added
     settings: {
-        overlap: false
+        overlap: false,
+        verticalAlign: 'top',
+        horizontalAlign: 'right',
+        type: 'info',
+        timeout: 5000
+    },
+    setOptions: function setOptions(options) {
+        this.settings = Object.assign({}, this.settings, options);
     },
     removeNotification: function removeNotification(timestamp) {
         var indexToDelete = this.state.findIndex(function (n) {
@@ -235,8 +256,12 @@ var NotificationStore = {
         }
     },
     addNotification: function addNotification(notification) {
+        if (typeof notification === 'string' || notification instanceof String) {
+            notification = { message: notification };
+        }
         notification.timestamp = new Date();
         notification.timestamp.setMilliseconds(notification.timestamp.getMilliseconds() + this.state.length);
+        notification = Object.assign({}, this.settings, notification);
         this.state.push(notification);
     },
     notify: function notify(notification) {
@@ -253,7 +278,7 @@ var NotificationStore = {
 };
 
 var NotificationsPlugin = {
-    install: function install(Vue) {
+    install: function install(Vue, options) {
         Vue.mixin({
             data: function data() {
                 return {
@@ -278,6 +303,9 @@ var NotificationsPlugin = {
             }
         });
         Vue.component('Notifications', Notifications);
+        if (options) {
+            NotificationStore.setOptions(options);
+        }
     }
 };
 

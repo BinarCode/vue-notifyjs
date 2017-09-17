@@ -17,14 +17,14 @@ $brand-danger:          #d9534f !default;*/
 .list-enter, .list-leave-to {
   opacity: 0; }
 
-button.close {
+.vue-notifyjs button.close {
   -webkit-appearance: none;
   padding: 0;
   cursor: pointer;
   background: 0 0;
   border: 0; }
 
-.close {
+.vue-notifyjs .close {
   font-size: inherit;
   color: #FFFFFF;
   opacity: .9;
@@ -34,7 +34,7 @@ button.close {
   line-height: 1;
   filter: alpha(opacity=20); }
 
-.alert {
+.vue-notifyjs .alert {
   border: 0;
   border-radius: 0;
   padding: 20px 15px;
@@ -47,100 +47,100 @@ button.close {
   transition: all 0.5s ease-in-out;
   min-width: 100px;
   cursor: pointer; }
-  .alert.center {
+  .vue-notifyjs .alert.center {
     left: 0px;
     right: 0px;
     margin: 0 auto; }
-  .alert.left {
+  .vue-notifyjs .alert.left {
     left: 20px; }
-  .alert.right {
+  .vue-notifyjs .alert.right {
     right: 20px; }
-  .alert b {
+  .vue-notifyjs .alert b {
     font-weight: 500;
     text-transform: uppercase;
     font-size: 12px; }
-  .alert, .alert.alert-default {
+  .vue-notifyjs .alert, .vue-notifyjs .alert.alert-default {
     background-color: white;
     color: #555555;
     border-radius: 4px;
     box-shadow: 0 12px 20px -10px rgba(255, 255, 255, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 255, 255, 0.2); }
-    .alert a, .alert .alert-link, .alert.alert-default a, .alert.alert-default .alert-link {
+    .vue-notifyjs .alert a, .vue-notifyjs .alert .alert-link, .vue-notifyjs .alert.alert-default a, .vue-notifyjs .alert.alert-default .alert-link {
       color: #555555; }
-  .alert.alert-inverse {
+  .vue-notifyjs .alert.alert-inverse {
     background-color: #2e2e2e;
     color: #fff;
     border-radius: 4px;
     box-shadow: 0 12px 20px -10px rgba(33, 33, 33, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(33, 33, 33, 0.2); }
-    .alert.alert-inverse a, .alert.alert-inverse .alert-link {
+    .vue-notifyjs .alert.alert-inverse a, .vue-notifyjs .alert.alert-inverse .alert-link {
       color: #fff; }
-  .alert.alert-primary {
+  .vue-notifyjs .alert.alert-primary {
     background-color: #af2cc5;
     color: #ffffff;
     border-radius: 4px;
     box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2); }
-    .alert.alert-primary a, .alert.alert-primary .alert-link {
+    .vue-notifyjs .alert.alert-primary a, .vue-notifyjs .alert.alert-primary .alert-link {
       color: #ffffff; }
-  .alert.alert-success {
+  .vue-notifyjs .alert.alert-success {
     background-color: #5cb860;
     color: #ffffff;
     border-radius: 4px;
     box-shadow: 0 12px 20px -10px rgba(76, 175, 80, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(76, 175, 80, 0.2); }
-    .alert.alert-success a, .alert.alert-success .alert-link {
+    .vue-notifyjs .alert.alert-success a, .vue-notifyjs .alert.alert-success .alert-link {
       color: #ffffff; }
-  .alert.alert-info {
+  .vue-notifyjs .alert.alert-info {
     background-color: #00d3ee;
     color: #ffffff;
     border-radius: 4px;
     box-shadow: 0 12px 20px -10px rgba(0, 188, 212, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(0, 188, 212, 0.2); }
-    .alert.alert-info a, .alert.alert-info .alert-link {
+    .vue-notifyjs .alert.alert-info a, .vue-notifyjs .alert.alert-info .alert-link {
       color: #ffffff; }
-  .alert.alert-warning {
+  .vue-notifyjs .alert.alert-warning {
     background-color: #ffa21a;
     color: #ffffff;
     border-radius: 4px;
     box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2); }
-    .alert.alert-warning a, .alert.alert-warning .alert-link {
+    .vue-notifyjs .alert.alert-warning a, .vue-notifyjs .alert.alert-warning .alert-link {
       color: #ffffff; }
-  .alert.alert-danger {
+  .vue-notifyjs .alert.alert-danger {
     background-color: #f55a4e;
     color: #ffffff;
     border-radius: 4px;
     box-shadow: 0 12px 20px -10px rgba(244, 67, 54, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(244, 67, 54, 0.2); }
-    .alert.alert-danger a, .alert.alert-danger .alert-link {
+    .vue-notifyjs .alert.alert-danger a, .vue-notifyjs .alert.alert-danger .alert-link {
       color: #ffffff; }
-  .alert.alert-rose {
+  .vue-notifyjs .alert.alert-rose {
     background-color: #eb3573;
     color: #ffffff;
     border-radius: 4px;
     box-shadow: 0 12px 20px -10px rgba(233, 30, 99, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(233, 30, 99, 0.2); }
-    .alert.alert-rose a, .alert.alert-rose .alert-link {
+    .vue-notifyjs .alert.alert-rose a, .vue-notifyjs .alert.alert-rose .alert-link {
       color: #ffffff; }
-  .alert-info, .alert-danger, .alert-warning, .alert-success {
+  .vue-notifyjs .alert-info, .vue-notifyjs .alert-danger, .vue-notifyjs .alert-warning, .vue-notifyjs .alert-success {
     color: #ffffff; }
-  .alert-default a, .alert-default .alert-link {
+  .vue-notifyjs .alert-default a, .vue-notifyjs .alert-default .alert-link {
     color: rgba(0,0,0, 0.87); }
-  .alert[data-notify="container"] {
+  .vue-notifyjs .alert[data-notify="container"] {
     width: 350px;
     padding: 10px 10px 10px 20px;
     border-radius: 4px; }
-  .alert i[data-notify="icon"] {
+  .vue-notifyjs .alert i[data-notify="icon"] {
     font-size: 30px;
     display: block;
     left: 15px;
     position: absolute;
     top: 50%;
     margin-top: -15px; }
-  .alert span {
+  .vue-notifyjs .alert span {
     display: block;
     max-width: 89%; }
-  .alert .alert-icon {
+  .vue-notifyjs .alert .alert-icon {
     display: block;
     float: left;
     margin-right: 15px; }
-    .alert .alert-icon i {
+    .vue-notifyjs .alert .alert-icon i {
       margin-top: -7px;
       top: 5px;
       position: relative; }
 
-.alert.alert-with-icon {
+.vue-notifyjs .alert.alert-with-icon {
   padding-left: 65px; }

@@ -11,14 +11,14 @@
 .list-enter, .list-leave-to {
   opacity: 0; }
 
-button.close {
+.vue-notifyjs button.close {
   -webkit-appearance: none;
   padding: 0;
   cursor: pointer;
   background: transparent;
   border: 0; }
 
-.close {
+.vue-notifyjs .close {
   float: right;
   font-size: 21px;
   font-weight: bold;
@@ -28,7 +28,7 @@ button.close {
   filter: alpha(opacity=20);
   opacity: .2; }
 
-.alert {
+.vue-notifyjs .alert {
   border: 0;
   border-radius: 0.1875rem;
   color: #FFFFFF;
@@ -40,45 +40,45 @@ button.close {
   position: fixed !important;
   transition: all 0.5s ease-in-out;
   cursor: pointer; }
-  .alert.center {
+  .vue-notifyjs .alert.center {
     left: 0px;
     right: 0px;
     margin: 0 auto; }
-  .alert.left {
+  .vue-notifyjs .alert.left {
     left: 20px; }
-  .alert.right {
+  .vue-notifyjs .alert.right {
     right: 20px; }
-  .alert[data-notify="container"] {
+  .vue-notifyjs .alert[data-notify="container"] {
     width: 350px;
     padding: 10px 10px 10px 20px;
     border-radius: 4px; }
 
-.alert.alert-success {
+.vue-notifyjs .alert.alert-success {
   background-color: #1be611; }
 
-.alert.alert-danger {
+.vue-notifyjs .alert.alert-danger {
   background-color: #ff5050; }
 
-.alert.alert-warning {
+.vue-notifyjs .alert.alert-warning {
   background-color: #ffbc50; }
 
-.alert.alert-info {
+.vue-notifyjs .alert.alert-info {
   background-color: #46b3ff; }
 
-.alert.alert-primary {
+.vue-notifyjs .alert.alert-primary {
   background-color: #fa764b; }
 
-.alert i.fa, .alert i.now-ui-icons {
+.vue-notifyjs .alert i.fa, .vue-notifyjs .alert i.now-ui-icons {
   font-size: 20px; }
 
-.alert .close {
+.vue-notifyjs .alert .close {
   color: #FFFFFF;
   opacity: .9;
   text-shadow: none;
   line-height: 0;
   outline: 0; }
 
-.alert span[data-notify="icon"] {
+.vue-notifyjs .alert span[data-notify="icon"] {
   font-size: 22px;
   display: block;
   left: 19px;
@@ -86,7 +86,7 @@ button.close {
   top: 50%;
   margin-top: -11px; }
 
-.alert button.close {
+.vue-notifyjs .alert button.close {
   position: absolute;
   right: 10px;
   top: 50%;
@@ -95,9 +95,9 @@ button.close {
   height: 25px;
   padding: 3px; }
 
-.alert .close ~ span {
+.vue-notifyjs .alert .close ~ span {
   display: block;
   max-width: 89%; }
 
-.alert.alert-with-icon {
+.vue-notifyjs .alert.alert-with-icon {
   padding-left: 65px; }
