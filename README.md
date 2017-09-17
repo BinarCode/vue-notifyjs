@@ -62,6 +62,38 @@ export default {
 ```
 **Note:** `<notifications></notifications>` can be declared only once anywhere in your app,
 preferably in your root component so the notification component is alive inside any other components.
+
+## Notification options
+You can set notification options in 3 ways
+
+1. Upon plugin initialization
+
+```js
+import Notify from 'vue-notifyjs'
+Vue.use(Notify, {type: 'primary', timeout: 2000})
+```
+2. Dynamically via `setOptions` method
+
+```js
+this.$notifications.setOptions({
+                            type: 'primary', 
+                            timeout: 2000,
+                            horizontalAlign: 'right',
+                            verticalAlign: 'top'
+                          })
+```
+
+3. When using `$notify`
+
+```js
+this.$notify({
+        message: 'Welcome',
+        type: 'success'
+      })
+```
+
+**Note:** Options sent through `this.$notify` will override default options and will have higher priority than default options.
+
 ## Props
 
 ## Notifications 
@@ -85,6 +117,7 @@ overlap: {
 ```js
 props: {
     message: String,
+    title: String,
     icon: String,
     verticalAlign: {
       type: String,
