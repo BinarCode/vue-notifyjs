@@ -2,6 +2,7 @@ export default {
     name: 'notification',
     props: {
         message: String,
+        title: String,
         icon: String,
         verticalAlign: {
             type: String,
@@ -13,7 +14,7 @@ export default {
         },
         horizontalAlign: {
             type: String,
-            default: 'center',
+            default: 'right',
             validator: (value) => {
                 let acceptedValues = ['left', 'center', 'right']
                 return acceptedValues.indexOf(value) !== -1
@@ -104,7 +105,8 @@ export default {
                     this.icon && <span data-notify="icon" class={['alert-icon', this.icon]}></span>
                 }
                 <span data-notify="message">
-            {this.message !== undefined && this.message}
+                    {this.title !== undefined && <span class="title"><b>{this.title}<br/></b></span>}
+                    {this.message !== undefined && this.message}
                     {this.component !== undefined &&
                     <this.component></this.component>}
         </span>

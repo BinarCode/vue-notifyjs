@@ -34,6 +34,7 @@ export default {
                     verticalAlign={notification.verticalAlign}
                     icon={notification.icon}
                     message={notification.message}
+                    title={notification.title}
                     timeout={notification.timeout}
                     type={notification.type}
                     component={notification.component}
