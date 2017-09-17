@@ -1,5 +1,5 @@
 /*!
- * vue-notifyjs v0.1.8
+ * vue-notifyjs v0.2.0
  * (c) 2017-present cristij <joracristi@gmail.com>
  * Released under the MIT License.
  */
@@ -217,7 +217,7 @@ var Notifications = {
         });
         return h(
             'div',
-            { 'class': 'notifications' },
+            { 'class': 'notifications vue-notifyjs' },
             [h(
                 'transition-group',
                 {
