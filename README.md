@@ -2,7 +2,7 @@
 Minimalist notification component for Vue 2.x
 
 Why use it?
-- Small: 1kb (minified & gzipped), 3kb (minified)
+- Small: 1.5kb (minified & gzipped), 4kb (minified)
 - Simple `this.$notify({message:'My message'})`
 - Has multiple themes 
 - The animations can be customized through Vue transitions
