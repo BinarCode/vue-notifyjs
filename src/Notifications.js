@@ -43,7 +43,7 @@ export default {
             }
         )
         return (
-            <div class="notifications">
+            <div class="notifications vue-notifyjs">
                 <transition-group name={this.transitionName} mode={this.transitionMode}>
                     {renderedNotifications}
                 </transition-group>
