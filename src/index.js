@@ -3,7 +3,14 @@ import Notifications from './Notifications.js'
 const NotificationStore = {
     state: [], // here the notifications will be added
     settings: {
-        overlap: false
+        overlap: false,
+        verticalAlign: 'top',
+        horizontalAlign: 'right',
+        type: 'info',
+        timeout: 5000
+    },
+    setOptions (options) {
+        this.settings = {...this.settings, ...options}
     },
     removeNotification (timestamp) {
         const indexToDelete = this.state.findIndex(n => n.timestamp === timestamp)
@@ -12,8 +19,12 @@ const NotificationStore = {
         }
     },
     addNotification(notification){
+        if (typeof notification === 'string' || notification instanceof String){
+            notification = {message: notification}
+        }
         notification.timestamp = new Date()
         notification.timestamp.setMilliseconds(notification.timestamp.getMilliseconds() + this.state.length)
+        notification = {...this.settings, ...notification}
         this.state.push(notification)
     },
     notify (notification) {
@@ -29,7 +40,7 @@ const NotificationStore = {
 }
 
 var NotificationsPlugin = {
-    install (Vue) {
+    install (Vue, options) {
         Vue.mixin({
             data(){
                 return {
@@ -53,6 +64,9 @@ var NotificationsPlugin = {
             }
         })
         Vue.component('Notifications', Notifications)
+        if(options){
+            NotificationStore.setOptions(options)
+        }
     }
 }
 

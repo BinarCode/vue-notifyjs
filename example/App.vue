@@ -16,7 +16,7 @@
   }
   import Vue from 'vue'
   import Notifications from '../src/index'
-  Vue.use(Notifications)
+  Vue.use(Notifications, {type: 'danger'})
   export default{
       methods:{
           addNotification(verticalAlign='top', horizontalAlign='right'){
@@ -33,13 +33,7 @@
                 }]
             this.$notify(notifications)*/
 
-           this.$notify( {
-               horizontalAlign: 'right',
-               verticalAlign: 'top',
-               type: "info",
-               component: msg
-           },)
-
+           this.$notify({title: 'Hi', message: 'Some message'})
           }
       }
   }
