@@ -4,6 +4,7 @@
   <a href="https://www.npmjs.com/package/vue-notifyjs"><img src="https://img.shields.io/npm/dt/vue-notifyjs.svg"></a>
   <a href="https://www.npmjs.com/package/vue-notifyjs"><img src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
   <a href="https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D"><img src="https://img.shields.io/twitter/url/https/github.com/cristijora/vue-notifyjs.svg?style=social"></a>
+  <a href="http://img.badgesize.io/cristijora/vue-notifyjs/master/dist/vue-notifyjs.min.js.svg?compression=gzip&style=flat-square"><img src="http://img.badgesize.io/cristijora/vue-notifyjs/master/dist/vue-notifyjs.min.js.svg?compression=gzip&style=flat-square"></a>
 </p>
 Minimalist notification component for Vue 2.x
 
