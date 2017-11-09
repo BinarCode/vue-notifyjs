@@ -136,7 +136,7 @@ props: {
     },
     type: {
       type: String,
-      default: 'info' // info | warning | danger | success
+      default: 'info' // info | warning | danger | success | primary
     },
     timeout: {
       type: Number,
