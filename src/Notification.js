@@ -90,7 +90,7 @@ export default {
         },
         tryClose (evt) {
             if(this.clickHandler){
-                this.clickHandler(evt)
+                this.clickHandler(evt, this)
             }
             if (this.closeOnClick) {
                 this.close()
