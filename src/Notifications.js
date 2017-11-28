@@ -39,6 +39,9 @@ export default {
                     type={notification.type}
                     component={notification.component}
                     timestamp={notification.timestamp}
+                    closeOnClick={notification.closeOnClick}
+                    clickHandler={notification.onClick}
+                    showClose={notification.showClose}
                     key={notification.timestamp.getTime()} onClose={this.removeNotification}/>
             }
         )

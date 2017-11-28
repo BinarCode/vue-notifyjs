@@ -34,7 +34,7 @@
     "bootstrap": "^3.3.7",
     "eslint-config-rem": "^3.0.0",
     "gh-pages": "^1.0.0",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.7.2",
     "poi": "^9.0.2",
     "rollup-plugin-babel": "^2.7.1",
     "sass-loader": "^6.0.6",

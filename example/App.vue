@@ -17,7 +17,7 @@
     import Vue from 'vue'
     import Notifications from '../src/index'
 
-    Vue.use(Notifications, {type: 'danger'})
+    Vue.use(Notifications, {type: 'danger', closeOnClick: false})
     export default {
         methods: {
             addNotification (verticalAlign = 'top', horizontalAlign = 'right') {
@@ -34,7 +34,9 @@
                   }]
               this.$notify(notifications)*/
 
-                this.$notify({title: 'Hi', message: 'Some message'})
+                this.$notify({title: 'Hi', message: 'Some message', onClick: (evt) => {
+                     alert('You clicked a notification')
+                }})
             }
         }
     }

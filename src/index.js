@@ -7,7 +7,9 @@ const NotificationStore = {
         verticalAlign: 'top',
         horizontalAlign: 'right',
         type: 'info',
-        timeout: 5000
+        timeout: 5000,
+        closeOnClick: true,
+        showClose: true
     },
     setOptions (options) {
         this.settings = {...this.settings, ...options}
@@ -39,7 +41,7 @@ const NotificationStore = {
     }
 }
 
-var NotificationsPlugin = {
+const NotificationsPlugin = {
     install (Vue, options) {
         Vue.mixin({
             data(){

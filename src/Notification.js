@@ -41,7 +41,16 @@ export default {
         },
         component: {
             type: [Object, Function]
-        }
+        },
+        showClose: {
+            type: Boolean,
+            default: true
+        },
+        closeOnClick: {
+            type: Boolean,
+            default: true
+        },
+        clickHandler: Function,
     },
     data () {
         return {
@@ -76,7 +85,16 @@ export default {
     },
     methods: {
         close () {
+
             this.$emit('close', this.timestamp)
+        },
+        tryClose (evt) {
+            if(this.clickHandler){
+                this.clickHandler(evt)
+            }
+            if (this.closeOnClick) {
+                this.close()
+            }
         }
     },
     mounted () {
@@ -85,22 +103,24 @@ export default {
             setTimeout(this.close, this.timeout)
         }
     },
-    render(h){
+    render (h) {
         let componentName = this.component
         return (
-            <div onClick={this.close}
+            <div onClick={this.tryClose}
                  data-notify="container"
                  class={['alert open ', {'alert-with-icon': this.icon}, this.verticalAlign, this.horizontalAlign, this.alertType]}
                  role="alert"
                  style={this.customPosition}
                  data-notify-position="top-center">
-                <button
-                    type="button"
-                    aria-hidden="true"
-                    class="close col-xs-1"
-                    data-notify="dismiss"
-                    onClick={this.close}>×
-                </button>
+                {
+                    this.showClose && <button
+                                        type="button"
+                                        aria-hidden="true"
+                                        class="close col-xs-1"
+                                        data-notify="dismiss"
+                                        onClick={this.close}>×
+                                    </button>
+                }
                 {
                     this.icon && <span data-notify="icon" class={['alert-icon', this.icon]}></span>
                 }
