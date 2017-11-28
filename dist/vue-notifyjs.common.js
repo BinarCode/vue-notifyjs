@@ -1,5 +1,5 @@
 /*!
- * vue-notifyjs v0.2.0
+ * vue-notifyjs v0.3.0
  * (c) 2017-present cristij <joracristi@gmail.com>
  * Released under the MIT License.
  */
@@ -50,7 +50,16 @@ var Notification = {
         },
         component: {
             type: [Object, Function]
-        }
+        },
+        showClose: {
+            type: Boolean,
+            default: true
+        },
+        closeOnClick: {
+            type: Boolean,
+            default: true
+        },
+        clickHandler: Function
     },
     data: function data() {
         return {
@@ -88,7 +97,16 @@ var Notification = {
     },
     methods: {
         close: function close() {
+
             this.$emit('close', this.timestamp);
+        },
+        tryClose: function tryClose(evt) {
+            if (this.clickHandler) {
+                this.clickHandler(evt);
+            }
+            if (this.closeOnClick) {
+                this.close();
+            }
         }
     },
     mounted: function mounted() {
@@ -103,7 +121,7 @@ var Notification = {
             'div',
             {
                 on: {
-                    'click': this.close
+                    'click': this.tryClose
                 },
                 attrs: {
                     'data-notify': 'container',
@@ -112,7 +130,7 @@ var Notification = {
 
                     'data-notify-position': 'top-center' },
                 'class': ['alert open ', { 'alert-with-icon': this.icon }, this.verticalAlign, this.horizontalAlign, this.alertType], style: this.customPosition },
-            [h(
+            [this.showClose && h(
                 'button',
                 {
                     attrs: {
@@ -206,7 +224,10 @@ var Notifications = {
                         timeout: notification.timeout,
                         type: notification.type,
                         component: notification.component,
-                        timestamp: notification.timestamp
+                        timestamp: notification.timestamp,
+                        closeOnClick: notification.closeOnClick,
+                        clickHandler: notification.onClick,
+                        showClose: notification.showClose
                     },
                     key: notification.timestamp.getTime(), on: {
                         'close': _this.removeNotification
@@ -242,7 +263,9 @@ var NotificationStore = {
         verticalAlign: 'top',
         horizontalAlign: 'right',
         type: 'info',
-        timeout: 5000
+        timeout: 5000,
+        closeOnClick: true,
+        showClose: true
     },
     setOptions: function setOptions(options) {
         this.settings = Object.assign({}, this.settings, options);
