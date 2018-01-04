@@ -32,7 +32,7 @@ export default {
             type: Number,
             default: 5000,
             validator: (value) => {
-                return value > 0
+                return value >= 0
             }
         },
         timestamp: {
@@ -107,29 +107,29 @@ export default {
         let componentName = this.component
         return (
             <div onClick={this.tryClose}
-                 data-notify="container"
-                 class={['alert open ', {'alert-with-icon': this.icon}, this.verticalAlign, this.horizontalAlign, this.alertType]}
-                 role="alert"
-                 style={this.customPosition}
-                 data-notify-position="top-center">
+                data-notify="container"
+                class={['alert open ', {'alert-with-icon': this.icon}, this.verticalAlign, this.horizontalAlign, this.alertType]}
+                role="alert"
+                style={this.customPosition}
+                data-notify-position="top-center">
                 {
                     this.showClose && <button
-                                        type="button"
-                                        aria-hidden="true"
-                                        class="close col-xs-1"
-                                        data-notify="dismiss"
-                                        onClick={this.close}>×
+                        type="button"
+                        aria-hidden="true"
+                        class="close col-xs-1"
+                        data-notify="dismiss"
+                        onClick={this.close}>×
                                     </button>
                 }
                 {
                     this.icon && <span data-notify="icon" class={['alert-icon', this.icon]}></span>
                 }
                 <span data-notify="message">
-                    {this.title !== undefined && <span class="title"><b>{this.title}<br/></b></span>}
+                {this.title !== undefined && <span class="title"><b>{this.title}<br/></b></span>}
                     {this.message !== undefined && this.message}
                     {this.component !== undefined &&
-                    <this.component></this.component>}
-        </span>
+                        <this.component></this.component>}
+                </span>
             </div>
         )
     }
