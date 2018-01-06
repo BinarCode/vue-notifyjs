@@ -1,13 +1,64 @@
 /*!
- * vue-notifyjs v0.3.0
- * (c) 2017-present cristij <joracristi@gmail.com>
+ * vue-notifyjs v0.4.0
+ * (c) 2018-present cristij <joracristi@gmail.com>
  * Released under the MIT License.
  */
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-    typeof define === 'function' && define.amd ? define(factory) :
-    (global.vueNotifyjs = factory());
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global.vueNotifyjs = factory());
 }(this, (function () { 'use strict';
+
+var nestRE = /^(attrs|props|on|nativeOn|class|style|hook)$/;
+
+var babelHelperVueJsxMergeProps = function mergeJSXProps(objs) {
+  return objs.reduce(function (a, b) {
+    var aa, bb, key, nestedKey, temp;
+    for (key in b) {
+      aa = a[key];
+      bb = b[key];
+      if (aa && nestRE.test(key)) {
+        // normalize class
+        if (key === 'class') {
+          if (typeof aa === 'string') {
+            temp = aa;
+            a[key] = aa = {};
+            aa[temp] = true;
+          }
+          if (typeof bb === 'string') {
+            temp = bb;
+            b[key] = bb = {};
+            bb[temp] = true;
+          }
+        }
+        if (key === 'on' || key === 'nativeOn' || key === 'hook') {
+          // merge functions
+          for (nestedKey in bb) {
+            aa[nestedKey] = mergeFn(aa[nestedKey], bb[nestedKey]);
+          }
+        } else if (Array.isArray(aa)) {
+          a[key] = aa.concat(bb);
+        } else if (Array.isArray(bb)) {
+          a[key] = [aa].concat(bb);
+        } else {
+          for (nestedKey in bb) {
+            aa[nestedKey] = bb[nestedKey];
+          }
+        }
+      } else {
+        a[key] = b[key];
+      }
+    }
+    return a;
+  }, {});
+};
+
+function mergeFn(a, b) {
+  return function () {
+    a && a.apply(this, arguments);
+    b && b.apply(this, arguments);
+  };
+}
 
 var Notification = {
     name: 'notification',
@@ -43,7 +94,7 @@ var Notification = {
             type: Number,
             default: 5000,
             validator: function validator(value) {
-                return value > 0;
+                return value >= 0;
             }
         },
         timestamp: {
@@ -106,7 +157,7 @@ var Notification = {
         },
         tryClose: function tryClose(evt) {
             if (this.clickHandler) {
-                this.clickHandler(evt);
+                this.clickHandler(evt, this);
             }
             if (this.closeOnClick) {
                 this.close();
@@ -120,33 +171,49 @@ var Notification = {
         }
     },
     render: function render(h) {
+        var _this2 = this;
+
         var componentName = this.component;
         return h(
             'div',
-            {
-                on: {
-                    'click': this.tryClose
-                },
+            babelHelperVueJsxMergeProps([{
                 attrs: {
                     'data-notify': 'container',
 
                     role: 'alert',
 
                     'data-notify-position': 'top-center' },
-                'class': ['alert open ', { 'alert-with-icon': this.icon }, this.verticalAlign, this.horizontalAlign, this.alertType], style: this.customPosition },
+                'class': ['alert open ', { 'alert-with-icon': this.icon }, this.verticalAlign, this.horizontalAlign, this.alertType], style: this.customPosition }, {
+                on: {
+                    'click': function click($event) {
+                        for (var _len = arguments.length, attrs = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+                            attrs[_key - 1] = arguments[_key];
+                        }
+
+                        _this2.tryClose.apply(_this2, [$event].concat(attrs));
+                    }
+                }
+            }]),
             [this.showClose && h(
                 'button',
-                {
+                babelHelperVueJsxMergeProps([{
                     attrs: {
                         type: 'button',
                         'aria-hidden': 'true',
 
                         'data-notify': 'dismiss'
                     },
-                    'class': 'close col-xs-1', on: {
-                        'click': this.close
+                    'class': 'close col-xs-1' }, {
+                    on: {
+                        'click': function click($event) {
+                            for (var _len2 = arguments.length, attrs = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+                                attrs[_key2 - 1] = arguments[_key2];
+                            }
+
+                            _this2.close.apply(_this2, [$event].concat(attrs));
+                        }
                     }
-                },
+                }]),
                 ['\xD7']
             ), this.icon && h(
                 'span',
@@ -218,7 +285,7 @@ var Notifications = {
         var renderedNotifications = this.$notifications.state.map(function (notification, index) {
             return h(
                 Notification,
-                {
+                babelHelperVueJsxMergeProps([{
                     attrs: {
                         horizontalAlign: notification.horizontalAlign,
                         verticalAlign: notification.verticalAlign,
@@ -233,10 +300,17 @@ var Notifications = {
                         clickHandler: notification.onClick,
                         showClose: notification.showClose
                     },
-                    key: notification.timestamp.getTime(), on: {
-                        'close': _this.removeNotification
+                    key: notification.timestamp.getTime() }, {
+                    on: {
+                        'close': function close($event) {
+                            for (var _len = arguments.length, attrs = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+                                attrs[_key - 1] = arguments[_key];
+                            }
+
+                            _this.removeNotification.apply(_this, [$event].concat(attrs));
+                        }
                     }
-                },
+                }]),
                 []
             );
         });

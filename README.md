@@ -83,20 +83,20 @@ Vue.use(Notify, {type: 'primary', timeout: 2000})
 
 ```js
 this.$notifications.setOptions({
-                            type: 'primary', 
-                            timeout: 2000,
-                            horizontalAlign: 'right',
-                            verticalAlign: 'top'
-                          })
+  type: 'primary', 
+  timeout: 2000,
+  horizontalAlign: 'right',
+  verticalAlign: 'top'
+})
 ```
 
 3. When using `$notify`
 
 ```js
 this.$notify({
-        message: 'Welcome',
-        type: 'success'
-      })
+  message: 'Welcome',
+  type: 'success'
+})
 ```
 
 **Note:** Options sent through `this.$notify` will override default options and will have higher priority than default options.
@@ -123,29 +123,42 @@ overlap: {
 ## Notification (passed through the object sent to $notify method)
 ```js
 props: {
-    message: String,
-    title: String,
-    icon: String,
-    verticalAlign: {
-      type: String,
-      default: 'top' // top | bottom
-    },
-    horizontalAlign: {
-      type: String,
-      default: 'center' // right | center | left
-    },
-    type: {
-      type: String,
-      default: 'info' // info | warning | danger | success | primary
-    },
-    timeout: {
-      type: Number,
-      default: 5000
-    },
-    component: {  //is rendered instead of notification message
-      type: [Object, Function]
-    }
+  message: String,
+  title: String,
+  icon: String,
+  verticalAlign: {
+    type: String,
+    default: 'top' // top | bottom
   },
+  horizontalAlign: {
+    type: String,
+    default: 'center' // right | center | left
+  },
+  type: {
+    type: String,
+    default: 'info' // info | warning | danger | success | primary
+  },
+  timeout: {
+    type: Number,
+    default: 5000
+  },
+  timestamp: {
+    type: Date,
+    default: () => new Date()
+  },
+  component: {  //is rendered instead of notification message
+    type: [Object, Function]
+  },
+  showClose: {
+      type: Boolean,
+      default: true
+  },
+  closeOnClick: {
+      type: Boolean,
+      default: true
+  },
+  clickHandler: Function,
+},
 ```
 ## Contributing
 

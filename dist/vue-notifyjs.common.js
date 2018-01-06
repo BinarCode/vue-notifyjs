@@ -1,9 +1,13 @@
 /*!
- * vue-notifyjs v0.3.0
- * (c) 2017-present cristij <joracristi@gmail.com>
+ * vue-notifyjs v0.4.0
+ * (c) 2018-present cristij <joracristi@gmail.com>
  * Released under the MIT License.
  */
 'use strict';
+
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var _mergeJSXProps = _interopDefault(require('babel-helper-vue-jsx-merge-props'));
 
 var Notification = {
     name: 'notification',
@@ -39,7 +43,7 @@ var Notification = {
             type: Number,
             default: 5000,
             validator: function validator(value) {
-                return value > 0;
+                return value >= 0;
             }
         },
         timestamp: {
@@ -102,7 +106,7 @@ var Notification = {
         },
         tryClose: function tryClose(evt) {
             if (this.clickHandler) {
-                this.clickHandler(evt);
+                this.clickHandler(evt, this);
             }
             if (this.closeOnClick) {
                 this.close();
@@ -116,33 +120,49 @@ var Notification = {
         }
     },
     render: function render(h) {
+        var _this2 = this;
+
         var componentName = this.component;
         return h(
             'div',
-            {
-                on: {
-                    'click': this.tryClose
-                },
+            _mergeJSXProps([{
                 attrs: {
                     'data-notify': 'container',
 
                     role: 'alert',
 
                     'data-notify-position': 'top-center' },
-                'class': ['alert open ', { 'alert-with-icon': this.icon }, this.verticalAlign, this.horizontalAlign, this.alertType], style: this.customPosition },
+                'class': ['alert open ', { 'alert-with-icon': this.icon }, this.verticalAlign, this.horizontalAlign, this.alertType], style: this.customPosition }, {
+                on: {
+                    'click': function click($event) {
+                        for (var _len = arguments.length, attrs = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+                            attrs[_key - 1] = arguments[_key];
+                        }
+
+                        _this2.tryClose.apply(_this2, [$event].concat(attrs));
+                    }
+                }
+            }]),
             [this.showClose && h(
                 'button',
-                {
+                _mergeJSXProps([{
                     attrs: {
                         type: 'button',
                         'aria-hidden': 'true',
 
                         'data-notify': 'dismiss'
                     },
-                    'class': 'close col-xs-1', on: {
-                        'click': this.close
+                    'class': 'close col-xs-1' }, {
+                    on: {
+                        'click': function click($event) {
+                            for (var _len2 = arguments.length, attrs = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+                                attrs[_key2 - 1] = arguments[_key2];
+                            }
+
+                            _this2.close.apply(_this2, [$event].concat(attrs));
+                        }
                     }
-                },
+                }]),
                 ['\xD7']
             ), this.icon && h(
                 'span',
@@ -214,7 +234,7 @@ var Notifications = {
         var renderedNotifications = this.$notifications.state.map(function (notification, index) {
             return h(
                 Notification,
-                {
+                _mergeJSXProps([{
                     attrs: {
                         horizontalAlign: notification.horizontalAlign,
                         verticalAlign: notification.verticalAlign,
@@ -229,10 +249,17 @@ var Notifications = {
                         clickHandler: notification.onClick,
                         showClose: notification.showClose
                     },
-                    key: notification.timestamp.getTime(), on: {
-                        'close': _this.removeNotification
+                    key: notification.timestamp.getTime() }, {
+                    on: {
+                        'close': function close($event) {
+                            for (var _len = arguments.length, attrs = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+                                attrs[_key - 1] = arguments[_key];
+                            }
+
+                            _this.removeNotification.apply(_this, [$event].concat(attrs));
+                        }
                     }
-                },
+                }]),
                 []
             );
         });
