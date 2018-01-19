@@ -16,15 +16,15 @@ Why use it?
 - Can be used both through npm and as a script tag
 
 ### Demos: 
-- [jsFiddle demo](https://jsfiddle.net/z11fe07p/2248/)
-- [Overlaping notifications](https://jsfiddle.net/z11fe07p/2284/)
-- [Custom html content via components](https://jsfiddle.net/z11fe07p/2297/)
-- [Custom animations](https://jsfiddle.net/z11fe07p/2517/)
+- [jsFiddle demo](https://jsfiddle.net/CristiJ/z11fe07p/2777/)
+- [Overlaping notifications](https://jsfiddle.net/CristiJ/z11fe07p/2778/)
+- [Custom html content via components](https://jsfiddle.net/CristiJ/z11fe07p/2779/)
+- [Custom animations](https://jsfiddle.net/CristiJ/z11fe07p/2780/)
 
 ### 3 themes supported
-#### [Default theme](https://jsfiddle.net/z11fe07p/2248/)
-#### [Material design theme](https://jsfiddle.net/z11fe07p/2286/)
-#### [Now-ui theme](https://jsfiddle.net/z11fe07p/2288/)
+#### [Default theme](https://jsfiddle.net/CristiJ/z11fe07p/2781/)
+#### [Material design theme](https://jsfiddle.net/CristiJ/z11fe07p/2782/)
+#### [Now-ui theme](https://jsfiddle.net/CristiJ/z11fe07p/2783/)
 
 ## Install
 
