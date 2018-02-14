@@ -16,7 +16,9 @@ const NotificationStore = {
     },
     removeNotification(timestamp) {
         const indexToDelete = this.state.findIndex(n => n.timestamp === timestamp)
-        if (indexToDelete !== -1) this.state.splice(indexToDelete, 1)
+        if (indexToDelete !== -1) {
+            this.state.splice(indexToDelete, 1)
+        }
     },
     addNotification(notification) {
         if (typeof notification === 'string' || notification instanceof String) {
