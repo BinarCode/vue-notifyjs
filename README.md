@@ -161,6 +161,13 @@ props: {
   clickHandler: Function,
 },
 ```
+## Methods
+
+clear() - Clears all current notifications
+```js
+this.$notifications.clear();
+```
+
 ## Contributing
 
 1. Fork it!

@@ -11,17 +11,17 @@ const NotificationStore = {
         closeOnClick: true,
         showClose: true
     },
-    setOptions (options) {
+    setOptions(options) {
         this.settings = {...this.settings, ...options}
     },
-    removeNotification (timestamp) {
+    removeNotification(timestamp) {
         const indexToDelete = this.state.findIndex(n => n.timestamp === timestamp)
         if (indexToDelete !== -1) {
             this.state.splice(indexToDelete, 1)
         }
     },
-    addNotification(notification){
-        if (typeof notification === 'string' || notification instanceof String){
+    addNotification(notification) {
+        if (typeof notification === 'string' || notification instanceof String) {
             notification = {message: notification}
         }
         notification.timestamp = new Date()
@@ -29,7 +29,7 @@ const NotificationStore = {
         notification = {...this.settings, ...notification}
         this.state.push(notification)
     },
-    notify (notification) {
+    notify(notification) {
         if (Array.isArray(notification)) {
             notification.forEach((notificationInstance) => {
                 this.addNotification(notificationInstance)
@@ -38,6 +38,9 @@ const NotificationStore = {
             this.addNotification(notification)
         }
 
+    },
+    clear() {
+      this.state = []
     }
 }
 
