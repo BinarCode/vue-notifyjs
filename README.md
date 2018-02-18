@@ -20,7 +20,7 @@ Why use it?
 - [Overlaping notifications](https://jsfiddle.net/z11fe07p/2878/)
 - [Custom html content via components](https://jsfiddle.net/z11fe07p/2880/)
 - [Custom animations](https://jsfiddle.net/z11fe07p/2882/)
-- [Close all notifications](https://jsfiddle.net/z11fe07p/2883/)
+- [Clears all current notifications](https://jsfiddle.net/z11fe07p/2883/)
 
 ### 3 themes supported
 #### [Default theme](https://jsfiddle.net/z11fe07p/2879/)

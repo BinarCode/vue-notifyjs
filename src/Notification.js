@@ -85,7 +85,6 @@ export default {
     },
     methods: {
         close () {
-
             this.$emit('close', this.timestamp)
         },
         tryClose (evt) {
@@ -125,7 +124,7 @@ export default {
                     this.icon && <span data-notify="icon" class={['alert-icon', this.icon]}></span>
                 }
                 <span data-notify="message">
-                {this.title !== undefined && <span class="title"><b>{this.title}<br/></b></span>}
+                    {this.title !== undefined && <span class="title"><b>{this.title}<br/></b></span>}
                     {this.message !== undefined && this.message}
                     {this.component !== undefined &&
                         <this.component></this.component>}

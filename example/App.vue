@@ -11,7 +11,7 @@
         <button class="btn btn-default btn-block" @click="addNotificationNoCloseOnClick()">No close on click</button>
         <button class="btn btn-default btn-block" @click="addNotificationNoCloseIcon()">No close icon</button>
         <button class="btn btn-default btn-block" @click="addNotificationWithClickHandler()">With click handler</button>
-        <button class="btn btn-default btn-block" @click="removeNotifications">Clear all notifications</button>
+        <button class="btn btn-default btn-block" @click="removeNotifications()">Clear all notifications</button>
     </div>
 </template>
 <script>
