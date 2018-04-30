@@ -1,4 +1,5 @@
 import Notifications from './Notifications.js'
+import Vue from 'vue';
 
 const NotificationStore = {
     state: [], // here the notifications will be added
@@ -59,16 +60,28 @@ function initStore(Vue){
   });
 }
 
-const NotificationsPlugin = {
-    install (Vue, options) {
-        let store = initStore(Vue);
-        Vue.prototype.$notify = store.notify;
-        Vue.prototype.$notifications = store.notificationStore;
-        Vue.component('Notifications', Notifications)
-        if(options){
-            NotificationStore.setOptions(options)
-        }
-    }
+export const Notification = new class {
+  constructor(){
+    this.store = initStore(Vue);
+  }
+
+  notify(...params){
+    this.store.notify(params)
+  }
+
+  notifications(){
+    return this.store.notificationStore;
+  }
 };
 
-export default NotificationsPlugin
+export default {
+  install (Vue, options) {
+    let store = initStore(Vue);
+    Vue.prototype.$notify = store.notify;
+    Vue.prototype.$notifications = store.notificationStore;
+    Vue.component('Notifications', Notifications);
+    if(options){
+      NotificationStore.setOptions(options)
+    }
+  }
+}

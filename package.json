@@ -21,7 +21,7 @@
     "test": "echo 'no tests!' && npm run lint",
     "prepublish": "npm run build",
     "lint": "xo",
-    "build": "bili --format cjs --format umd --compress --banner --js babel && node-sass themes/ -o themes/",
+    "build": "bili --external=vue --format cjs --format umd --compress --banner --js babel && node-sass themes/ -o themes/",
     "build:example": "poi build",
     "dev": "poi --port 5000",
     "deploy": "npm run build:example && gh-pages -d example/dist"
@@ -29,6 +29,9 @@
   "author": "cristij <joracristi@gmail.com>",
   "license": "MIT",
   "dependencies": {},
+  "peerDependencies": {
+    "vue": "^2.2.0"
+  },
   "devDependencies": {
     "babel-preset-vue-app": "^2.0.0",
     "bili": "^0.16.0-rc.2",
