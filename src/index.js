@@ -42,37 +42,33 @@ const NotificationStore = {
     clear() {
       this.state = []
     }
+};
+
+function initStore(Vue){
+  return new Vue({
+    data(){
+      return {
+        notificationStore: NotificationStore
+      }
+    },
+    methods: {
+      notify(notification) {
+        this.notificationStore.notify(notification);
+      }
+    }
+  });
 }
 
 const NotificationsPlugin = {
     install (Vue, options) {
-        Vue.mixin({
-            data(){
-                return {
-                    notificationStore: NotificationStore
-                }
-            },
-            methods: {
-                notify(notification) {
-                    this.notificationStore.notify(notification);
-                }
-            }
-        })
-        Object.defineProperty(Vue.prototype, '$notify', {
-            get () {
-                return this.$root.notify
-            }
-        })
-        Object.defineProperty(Vue.prototype, '$notifications', {
-            get () {
-                return this.$root.notificationStore
-            }
-        })
+        let store = initStore(Vue);
+        Vue.prototype.$notify = store.notify;
+        Vue.prototype.$notifications = store.notificationStore;
         Vue.component('Notifications', Notifications)
         if(options){
             NotificationStore.setOptions(options)
         }
     }
-}
+};
 
 export default NotificationsPlugin
