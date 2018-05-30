@@ -68,6 +68,43 @@ export default {
 <style src="vue-notifyjs/themes/default.css"></style>
 
 ```
+
+## With Vuex
+```javascript
+import Vue from 'vue'
+import App from './App'
+import Notify from 'vue-notifyjs';
+import Vuex from "vuex"
+
+Vue.use(Notify)
+Vue.use(Vuex)
+
+let notifier = new Vue()
+
+const store = new Vuex.Store({
+  state:{},
+  actions:{
+    notify(context, payload){
+      notifier.$notify(payload)
+    }
+  }
+})
+
+new Vue({
+  el: '#app',
+  store,
+  template: '<App/>',
+  components: { App }
+})
+
+```
+Now you can dispatch an action like so
+```javascript
+this.$store.dispatch('notify', {
+            message: 'Welcome!',
+            type: 'success',
+          });
+```
 **Note:** `<notifications></notifications>` can be declared only once anywhere in your app,
 preferably in your root component so the notification component is alive inside any other components.
 
