@@ -176,8 +176,6 @@ component: {
 }
 ```
 
-This is equivalent to <span><b>{{ msg }}</b></span>
-
 ## Methods
 
 clear() - Clears all current notifications
