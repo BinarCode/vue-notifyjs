@@ -161,6 +161,23 @@ props: {
   clickHandler: Function,
 },
 ```
+## Passing component (without the need of the vue compiler)
+
+In production mode, you probably don't want to ship your app with the vue compiler. To accomplish this, your need to pass your component within the render function.
+
+```
+component: {
+  render (createElement) {
+    return createElement(
+      'span',
+      [ createElement('b', {}, msg) ]
+    );
+  }
+}
+```
+
+This is equivalent to <span><b>{{ msg }}</b></span>
+
 ## Methods
 
 clear() - Clears all current notifications
