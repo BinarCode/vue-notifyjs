@@ -158,7 +158,7 @@ props: {
       type: Boolean,
       default: true
   },
-  clickHandler: Function,
+  onClick: Function,
 },
 ```
 ## Methods
